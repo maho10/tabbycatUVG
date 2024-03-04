@@ -1,6 +1,6 @@
 import logging
+from decimal import Decimal
 from itertools import product
-from math import log10
 
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
@@ -75,7 +75,7 @@ class BaseScoreField(forms.FloatField):
         self.check_value(value)
 
     def check_value(self, value):
-        if value and self.step_value and round(value % self.step_value, -(round(log10(self.step_value)) - 1)) != 0:
+        if value and self.step_value and Decimal(value) % Decimal(self.step_value) == 0:
             if self.step_value == 1:
                 msg = _("Please enter a whole number.")
             else:
