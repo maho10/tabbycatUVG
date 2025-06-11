@@ -907,9 +907,11 @@ class PerAdjudicatorBallotSetForm(ScoresMixin, BaseBallotSetForm):
         """Adds the speaker score fields:
          - <side>_score_a#_s#,  one for each score
         """
+        super().create_score_fields()
         for side, pos in product(self.sides, self.positions):
             scorefield = ReplyScoreField if (pos == self.reply_position) else SubstantiveScoreField
             for adj in self.adjudicators:
+                name = self._fieldname_score(adj, side, pos)
                 self.fields[self._fieldname_score(adj, side, pos)] = scorefield(
                     widget=forms.NumberInput(attrs={'class': 'number'}),
                     tournament=self.tournament,
@@ -924,6 +926,7 @@ class PerAdjudicatorBallotSetForm(ScoresMixin, BaseBallotSetForm):
                         required=False,
                         widget=forms.NumberInput(attrs={'class': 'number', 'weight': criterion.weight}),
                     )
+        self.create_forfeit_fields()
         if self.using_declared_winner:
             for adj in self.adjudicators:
                 self.fields[self._fieldname_declared_winner(adj)] = self.create_declared_winner_dropdown()
