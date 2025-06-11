@@ -907,7 +907,10 @@ class PerAdjudicatorBallotSetForm(ScoresMixin, BaseBallotSetForm):
         """Adds the speaker score fields:
          - <side>_score_a#_s#,  one for each score
         """
-        ScoresMixin.create_score_fields(self)
+        for cls in type(self).mro()[1:]:
+            if 'create_score_fields' in cls.__dict__:
+                cls.create_score_fields(self)
+                break
         for side, pos in product(self.sides, self.positions):
             scorefield = ReplyScoreField if (pos == self.reply_position) else SubstantiveScoreField
             for adj in self.adjudicators:
