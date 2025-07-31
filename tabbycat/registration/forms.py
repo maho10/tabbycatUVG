@@ -4,7 +4,7 @@ from django import forms
 from django.utils.text import capfirst
 from django.utils.translation import gettext_lazy as _
 
-from participants.emoji import EMOJI_RANDOM_FIELD_CHOICES
+from participants.emoji import EMOJI_RANDOM_FIELD_CHOICES, pick_unused_emoji
 from participants.models import Adjudicator, Coach, Institution, Speaker, Team, TournamentInstitution
 from privateurls.utils import populate_url_keys
 
@@ -133,6 +133,9 @@ class TeamForm(CustomQuestionsFormMixin, forms.ModelForm):
 
         if 'use_institution_prefix' not in self.tournament.pref('reg_team_fields') and self.tournament.pref('team_name_generator') != 'user':
             self.instance.use_institution_prefix = bool(self.institution)
+
+        if not self.cleaned_data.get('emoji', None):
+            self.instance.emoji = pick_unused_emoji(tournament_id=self.tournament.id)[0]
 
         obj = super().save()
         self.save_answers(obj)
