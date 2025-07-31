@@ -6,7 +6,7 @@ from django.forms import modelformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext as _, gettext_lazy, ngettext
-from django.views.generic.edit import CreateView, FormView
+from django.views.generic.edit import FormView
 from formtools.wizard.views import SessionWizardView
 
 from actionlog.mixins import LogActionMixin
@@ -174,12 +174,13 @@ class BaseCreateTeamFormView(LogActionMixin, PublicTournamentPageMixin, CustomQu
         return form
 
     def done(self, form_list, form_dict, **kwargs):
+        team = form_dict['team'].save()
         if self.tournament.pref('team_name_generator') != 'user':
             reference = getattr(self, self.REFERENCE_GENERATORS[self.tournament.pref('team_name_generator')])(form_dict['team'].instance, form_dict['speaker'])
             form_dict['team'].instance.reference = reference
 
         form_dict['team'].instance.code_name = getattr(self, self.CODE_NAME_GENERATORS[self.tournament.pref('code_name_generator')])(form_dict['team'].instance, form_dict['speaker'])
-        team = form_dict['team'].save()
+        team.save()
         self.object = team
 
         for speaker in form_dict['speaker']:
@@ -281,7 +282,7 @@ class PublicCreateTeamFormView(BaseCreateTeamFormView):
         return kwargs
 
 
-class BaseCreateAdjudicatorFormView(LogActionMixin, PublicTournamentPageMixin, CustomQuestionFormMixin, CreateView):
+class BaseCreateAdjudicatorFormView(LogActionMixin, PublicTournamentPageMixin, CustomQuestionFormMixin, FormView):
     form_class = AdjudicatorForm
     template_name = 'adjudicator_registration_form.html'
     page_emoji = '👂'
@@ -334,7 +335,7 @@ class PublicCreateAdjudicatorFormView(BaseCreateAdjudicatorFormView):
         return kwargs
 
 
-class CreateSpeakerFormView(LogActionMixin, PublicTournamentPageMixin, CustomQuestionFormMixin, CreateView):
+class CreateSpeakerFormView(LogActionMixin, PublicTournamentPageMixin, CustomQuestionFormMixin, FormView):
     form_class = SpeakerForm
     template_name = 'adjudicator_registration_form.html'
     page_emoji = '👄'
