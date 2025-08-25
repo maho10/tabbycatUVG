@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.postgres.forms import SimpleArrayField
 from django.db.models import Count, Prefetch, Sum
-from django.forms import modelformset_factory
+from django.forms import HiddenInput, modelformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext as _, gettext_lazy, ngettext
@@ -581,8 +581,12 @@ class AdjudicatorRegistrationTableView(TournamentMixin, AdministratorMixin, VueT
 class CustomQuestionFormsetView(TournamentMixin, AdministratorMixin, ModelFormSetView):
     formset_model = Question
     formset_factory_kwargs = {
-        'fields': ['name', 'text', 'help_text', 'answer_type', 'required', 'min_value', 'max_value', 'choices'],
+        'fields': ['tournament', 'for_content_type', 'name', 'text', 'help_text', 'answer_type', 'required', 'min_value', 'max_value', 'choices'],
         'field_classes': {'choices': SimpleArrayField},
+        'widgets': {
+            'tournament': HiddenInput,
+            'for_content_type': HiddenInput,
+        },
         'extra': 3,
     }
     question_model = None
@@ -593,6 +597,14 @@ class CustomQuestionFormsetView(TournamentMixin, AdministratorMixin, ModelFormSe
 
     page_emoji = '❓'
     page_title = gettext_lazy("Custom Questions")
+
+    def get_formset_kwargs(self):
+        return {
+            'initial': [{
+                'tournament': self.tournament,
+                'for_content_type': ContentType.objects.get_for_model(self.question_model),
+            }] * 3,
+        }
 
     def get_page_subtitle(self):
         return _("for %s") % self.question_model._meta.verbose_name_plural
