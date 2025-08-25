@@ -57,7 +57,7 @@ class InstitutionCoachForm(CustomQuestionsFormMixin, forms.ModelForm):
         model = Coach
         fields = ('name', 'email')
         labels = {
-            'name': _('Coach name'),
+            'name': _('Name of primary contact'),
         }
 
     def save(self):
@@ -121,6 +121,9 @@ class TeamForm(CustomQuestionsFormMixin, forms.ModelForm):
     class Meta:
         model = Team
         fields = ('tournament', 'reference', 'institution', 'use_institution_prefix', 'code_name', 'emoji', 'seed', 'break_categories')
+        labels = {
+            'reference': _("Team name (excluding institution)"),
+        }
         widgets = {
             'tournament': forms.HiddenInput(),
         }
