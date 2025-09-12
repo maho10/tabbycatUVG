@@ -55,6 +55,7 @@ from .prefetch import populate_history
 from .serializers import EditDebateTeamsDebateSerializer, EditDebateTeamsTeamSerializer
 from .tables import (AdminDrawTableBuilder, PositionBalanceReportDrawTableBuilder,
         PositionBalanceReportSummaryTableBuilder, PublicDrawTableBuilder)
+from .types import DebateSide
 
 logger = logging.getLogger(__name__)
 
@@ -275,7 +276,7 @@ class BriefingRoomDrawByTeamTableMixin(BriefingRoomDrawTableMixin):
         debates = [d for d in debates if not d.is_bye]
 
         draw_by_team = [(debate, debate.get_team(side)) for debate, side in product(debates, self.tournament.sides)]
-        draw_by_team.extend([(debate, debate.get_team('bye')) for debate in byes])
+        draw_by_team.extend([(debate, debate.get_team(DebateSide.BYE)) for debate in byes])
         draw_by_team.sort(key=lambda x: unicodedata.normalize('NFKD', table._team_short_name(x[1])))
 
         if len(draw_by_team) == 0:

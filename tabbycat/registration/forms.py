@@ -57,7 +57,7 @@ class InstitutionCoachForm(CustomQuestionsFormMixin, forms.ModelForm):
         model = Coach
         fields = ('name', 'email')
         labels = {
-            'name': _('Coach name'),
+            'name': _('Name of primary contact'),
         }
 
     def save(self):
@@ -121,6 +121,9 @@ class TeamForm(CustomQuestionsFormMixin, forms.ModelForm):
     class Meta:
         model = Team
         fields = ('tournament', 'reference', 'institution', 'use_institution_prefix', 'code_name', 'emoji', 'seed', 'break_categories')
+        labels = {
+            'reference': _("Team name (excluding institution)"),
+        }
         widgets = {
             'tournament': forms.HiddenInput(),
         }
@@ -139,6 +142,10 @@ class TeamForm(CustomQuestionsFormMixin, forms.ModelForm):
 
         obj = super().save()
         self.save_answers(obj)
+
+        obj.break_categories.set(self.tournament.breakcategory_set.filter(is_general=True))
+        if obj.institution:
+            obj.teaminstitutionconflict_set.create(institution=obj.institution)
         return obj
 
 
@@ -215,6 +222,9 @@ class AdjudicatorForm(CustomQuestionsFormMixin, forms.ModelForm):
         obj = super().save()
         populate_url_keys([obj])
         self.save_answers(obj)
+
+        if obj.institution:
+            obj.adjudicatorinstitutionconflict_set.create(institution=obj.institution)
         return obj
 
 

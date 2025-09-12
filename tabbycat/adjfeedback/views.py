@@ -865,6 +865,7 @@ class BaseCsvView(View):
 
 class AdjudicatorScoresCsvView(TournamentMixin, AdministratorMixin, BaseCsvView):
     filename = "scores.csv"
+    view_permission = Permission.VIEW_FEEDBACK
 
     def write_rows(self, writer):
         writer.writerow(["id", "name", "base_score", "gender", "region", "nrounds"])
@@ -877,6 +878,7 @@ class AdjudicatorScoresCsvView(TournamentMixin, AdministratorMixin, BaseCsvView)
 
 class AdjudicatorFeedbackCsvView(FeedbackMixin, AdministratorMixin, TournamentMixin, BaseCsvView):
     filename = "feedback.csv"
+    view_permission = Permission.VIEW_FEEDBACK
 
     def get_feedback_queryset(self):
         return super().get_feedback_queryset().filter(confirmed=True)

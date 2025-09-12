@@ -945,6 +945,7 @@ class PublicPassword(StringPreference):
     name = 'public_password'
     default = ''
     required = False
+    sensitive = True
 
 
 @tournament_preferences_registry.register
@@ -1345,6 +1346,7 @@ class ReplyToEmailName(StringPreference):
     section = email
     name = 'reply_to_name'
     default = "Tabulation Team"
+    sensitive = True
 
 
 @tournament_preferences_registry.register
@@ -1355,6 +1357,7 @@ class ReplyToEmailAddress(StringPreference):
     name = 'reply_to_address'
     default = ""
     field_kwargs = {'validators': [EmailValidator()]}
+    sensitive = True
 
 
 @tournament_preferences_registry.register
@@ -1366,6 +1369,7 @@ class EmailWebhookKey(StringPreference):
     default = ""
     required = False
     field_kwargs = {'validators': [validate_slug]}
+    sensitive = True
 
 
 @tournament_preferences_registry.register

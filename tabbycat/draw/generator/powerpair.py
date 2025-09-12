@@ -549,6 +549,9 @@ class SingleGraphPowerPairedDrawGenerator(GraphCostMixin, GraphGeneratorMixin, B
             min([t.subrank for t in p if t.subrank is not None and t.points == max(q.points for q in p)], default=0),  # Then by subrank of highest ranked team
         )
 
+    def get_bracket(self, pairing, points):
+        return max([t.points for t in pairing])
+
     # Pullup penalty methods
     @staticmethod
     def _pullup_top(team, size=None):

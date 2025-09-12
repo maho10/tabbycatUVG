@@ -967,6 +967,9 @@ class PerAdjudicatorBallotSetForm(ScoresMixin, BaseBallotSetForm):
     # --------------------------------------------------------------------------
 
     def clean_scoresheet(self, cleaned_data):
+        if any(cleaned_data.get(self._fieldname_forfeit(side), False) for side in self.sides):
+            return
+
         for adj in self.adjudicators:
             should_skip = False
             for side, pos in product(self.sides, self.positions):

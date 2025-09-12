@@ -60,6 +60,7 @@ class AdjudicationCore(BaseGroup):
         Permission.EDIT_FEEDBACKQUESTION,
         Permission.VIEW_FEEDBACK_UNSUBMITTED,
         Permission.VIEW_FEEDBACK_OVERVIEW,
+        Permission.VIEW_FEEDBACK,
 
         # Judging and scoring
         Permission.EDIT_BASEJUDGESCORES_IND,
@@ -94,6 +95,8 @@ class AdjudicationCore(BaseGroup):
         Permission.VIEW_INSTITUTIONS,
         Permission.VIEW_DECODED_TEAMS,
         Permission.VIEW_ANONYMOUS,
+        Permission.VIEW_ADMIN_DRAW,
+        Permission.VIEW_DEBATE,
     ]
 
 

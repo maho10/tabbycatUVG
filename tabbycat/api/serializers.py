@@ -33,7 +33,7 @@ from results.result import DebateResult, ResultError
 from standings.speakers import SpeakerStandingsGenerator
 from standings.teams import TeamStandingsGenerator
 from tournaments.models import Round, Tournament
-from users.models import Group
+from users.models import Group, Membership, UserPermission
 from users.permissions import has_permission, Permission
 from utils.misc import get_ip_address
 from venues.models import Venue, VenueCategory, VenueConstraint
@@ -1637,9 +1637,23 @@ class UserSerializer(serializers.ModelSerializer):
         }
 
     def create(self, validated_data):
+        tournaments = validated_data.pop('tournaments', [])
         user = self.Meta.model(**validated_data)
         user.set_password(validated_data['password'])
         user.save()
+
+        memberships = []
+        permissions = []
+        for tournament_permissions in tournaments:
+            for group in tournament_permissions['groups']:
+                if group.tournament != tournament_permissions['tournament']:
+                    raise serializers.ValidationError('Group must be within the specified tournament')
+                memberships.append(Membership(user=user, group=group))
+            permissions.extend([
+                UserPermission(user=user, permission=permission, tournament=tournament_permissions['tournament']) for permission in tournament_permissions['permissions']
+            ])
+        Membership.objects.bulk_create(memberships)
+        UserPermission.objects.bulk_create(permissions)
 
         return user
 

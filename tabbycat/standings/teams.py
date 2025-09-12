@@ -1,6 +1,7 @@
 """Standings generator for teams."""
 
 import logging
+from statistics import mean
 
 from django.contrib.postgres.aggregates import ArrayAgg
 from django.db.models import Avg, Count, F, FloatField, PositiveIntegerField, Q, StdDev, Sum
@@ -219,22 +220,28 @@ class DrawStrengthByRankMetricAnnotator(BaseMetricAnnotator):
 
         logger.info("Running opponents query for rank draw strength:")
 
+        team_filter = Q()
         # Make a copy of teams queryset and annotate with opponents
         opponents_filter = ~Q(debateteam__debate__debateteam__team_id=F('id'))
         opponents_filter &= Q(debateteam__debate__round__stage=Round.Stage.PRELIMINARY)
         if round is not None:
             opponents_filter &= Q(debateteam__debate__round__seq__lte=round.seq)
+            team_filter &= Q(tournament=round.tournament)
+
         opponents_annotation = ArrayAgg('debateteam__debate__debateteam__team_id',
                 filter=opponents_filter)
         logger.info("Opponents annotation: %s", str(opponents_annotation))
-        teams_with_opponents = queryset.model.objects.annotate(opponent_ids=opponents_annotation)
+        teams_with_opponents = queryset.model.objects.filter(team_filter).annotate(opponent_ids=opponents_annotation)
         opponents_by_team = {team.id: team.opponent_ids or [] for team in teams_with_opponents}
         teams_by_id = {team.id: team for team in teams_with_opponents}
 
         for team in queryset:
-            ranks = [standings.infos[teams_by_id[opponent_id]].rankings['rank'][0] for opponent_id in opponents_by_team[team.id]]
+            ranks = []
+            for opponent_id in opponents_by_team[team.id]:
+                if opponent := standings.infos.get(teams_by_id[opponent_id]):
+                    ranks.append(opponent.rankings['rank'][0])
             ranks_without_none = [rank for rank in ranks if rank is not None]
-            standings.add_metric(team, self.key, sum(ranks_without_none))
+            standings.add_metric(team, self.key, mean(ranks_without_none))
 
 
 class DrawStrengthByWinsMetricAnnotator(BaseDrawStrengthMetricAnnotator):
