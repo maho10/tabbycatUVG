@@ -381,14 +381,20 @@ class InstitutionViewSet(TournamentAPIMixin, TournamentPublicAPIMixin, ModelView
         if region := params.validated_data.get('region'):
             filters &= Q(region__name=region.name)
 
-        return Institution.objects.filter(
+        qs = Institution.objects.filter(
             Q(adjudicator__tournament=self.tournament) | Q(team__tournament=self.tournament),
             filters,
         ).distinct().select_related('region').prefetch_related(
             Prefetch('team_set', queryset=self.tournament.team_set.all()),
             Prefetch('adjudicator_set', queryset=self.tournament.adjudicator_set.all()),
+            Prefetch('tournamentinstitution_set',
+                queryset=self.tournament.tournamentinstitution_set.all().prefetch_related(
+                    'coach_set__answers__question__tournament', 'answers__question__tournament')),
             'venue_constraints__category__tournament',
         )
+        for inst in qs:
+            inst.tournament = t[0] if len(t := inst.tournamentinstitution_set.all()) == 1 else None
+        return qs
 
 
 @extend_schema(tags=['teams'], parameters=[tournament_parameter])

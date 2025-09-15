@@ -24,7 +24,7 @@ from motions.models import DebateTeamMotionPreference, Motion, RoundMotion
 from options.preferences import (BPAssignmentMethod, BPPositionCost, BPPullupDistribution, DrawAvoidConflicts,
     DrawOddBracket, DrawPairingMethod, DrawPullupRestriction, DrawSideAllocations)
 from participants.emoji import pick_unused_emoji
-from participants.models import Adjudicator, Institution, Person, Region, Speaker, SpeakerCategory, Team
+from participants.models import Adjudicator, Coach, Institution, Person, Region, Speaker, SpeakerCategory, Team
 from participants.utils import populate_code_names
 from privateurls.utils import populate_url_keys
 from registration.models import Question
@@ -892,6 +892,37 @@ class InstitutionSerializer(serializers.ModelSerializer):
 
 
 class PerTournamentInstitutionSerializer(InstitutionSerializer):
+    class CoachSerializer(serializers.ModelSerializer):
+        answers = fields.AnswerSerializer(many=True, required=False)
+
+        class Meta:
+            model = Coach
+            exclude = ('tournament_institution',)
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+
+            if not is_staff(kwargs.get('context')):
+                t = kwargs['context']['tournament']
+                with_permission = partial(has_permission, user=kwargs['context']['request'].user, tournament=t)
+
+                if not with_permission(permission=Permission.VIEW_PARTICIPANT_CONTACT):
+                    self.fields.pop('email')
+                    self.fields.pop('phone')
+                if not with_permission(permission=Permission.VIEW_PARTICIPANT_GENDER):
+                    self.fields.pop('gender')
+                    self.fields.pop('pronoun')
+                if not with_permission(permission=Permission.VIEW_PRIVATE_URLS):
+                    self.fields.pop('url_key')
+                if not with_permission(permission=Permission.VIEW_CHECKIN):
+                    self.fields.pop('barcode')
+
+                if not with_permission(permission=Permission.VIEW_CUSTOM_ANSWERS):
+                    self.fields.pop('answers')
+
+                if not with_permission(permission=Permission.VIEW_PARTICIPANT_DECODED) and t.pref('participant_code_names') == 'everywhere':
+                    self.fields.pop('name')
+
     teams = fields.TournamentHyperlinkedRelatedField(
         source='team_set',
         many=True,
@@ -904,6 +935,12 @@ class PerTournamentInstitutionSerializer(InstitutionSerializer):
         view_name='api-adjudicator-detail',
         required=False,
     )
+    answers = fields.AnswerSerializer(many=True, required=False, allow_null=True, source='tournament.answers')
+    coaches = CoachSerializer(many=True, required=False, allow_null=True, source='tournament.coach_set')
+    teams_requested = serializers.IntegerField(required=False, allow_null=True, source='tournament.teams_requested')
+    teams_allocated = serializers.IntegerField(required=False, allow_null=True, source='tournament.teams_allocated')
+    adjudicators_requested = serializers.IntegerField(required=False, allow_null=True, source='tournament.adjudicators_requested')
+    adjudicators_allocated = serializers.IntegerField(required=False, allow_null=True, source='tournament.adjudicators_allocated')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
