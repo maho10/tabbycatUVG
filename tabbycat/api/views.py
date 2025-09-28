@@ -855,6 +855,13 @@ class SubstantiveSpeakerStandingsView(BaseStandingsView):
             stage=Round.Stage.PRELIMINARY).count()
         return {'rank_filter': (self.missable_field, total_prelim_rounds - missable)}
 
+    def get_metrics(self):
+        metrics, extra_metrics = super().get_metrics()
+
+        if self.tournament.pref(self.missable_preference) >= 0 and self.missable_field not in metrics and self.missable_field not in extra_metrics:
+            extra_metrics.append(self.missable_field)
+        return metrics, extra_metrics
+
 
 @extend_schema_view(
     get=extend_schema(summary="Get reply speaker standings", responses=serializers.SpeakerStandingsSerializer(many=True)),
