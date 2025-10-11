@@ -84,7 +84,7 @@ class CustomQuestionsFormMixin:
                 min_value = int(question.min_value) if question.min_value is not None else None
                 max_value = int(question.max_value) if question.max_value is not None else None
                 if min_value is None or max_value is None:
-                    logger.error("Integer scale %r has no min_value or no max_value" % question.reference)
+                    logger.error("Integer scale %r has no min_value or no max_value" % question.name)
                     field = forms.IntegerField()
                 else:
                     field = IntegerScaleField(min_value=min_value, max_value=max_value)
