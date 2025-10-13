@@ -1279,7 +1279,7 @@ class FeedbackSerializer(serializers.ModelSerializer):
         related_field = getattr(source, 'debate%s_set' % type_name)
         try:
             data['source_%s' % type_name] = related_field.get(debate=debate)
-        except related_field.rel.related_model.DoesNotExist:
+        except related_field.model.DoesNotExist:
             raise serializers.ValidationError("Source is not in debate")
 
         return super().validate(data)

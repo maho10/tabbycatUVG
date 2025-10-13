@@ -1,7 +1,8 @@
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.postgres.forms import SimpleArrayField
-from django.db.models import Count, Prefetch, Sum
+from django.db.models import Count, Max, Prefetch, Sum
+from django.db.models.functions import Coalesce
 from django.forms import HiddenInput, modelformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -616,7 +617,10 @@ class CustomQuestionFormsetView(TournamentMixin, AdministratorMixin, ModelFormSe
     def formset_valid(self, formset):
         self.instances = formset.save(commit=False)
         if self.instances:
-            for i, question in enumerate(self.instances, start=1):
+            for cat, fields in formset.changed_objects:
+                cat.save()
+
+            for i, question in enumerate(formset.new_objects, start=self.get_formset_queryset().aggregate(m=Coalesce(Max('seq'), 0) + 1)['m']):
                 question.tournament = self.tournament
                 question.for_content_type = ContentType.objects.get_for_model(self.question_model)
                 question.seq = i
