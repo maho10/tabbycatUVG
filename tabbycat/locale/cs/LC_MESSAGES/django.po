@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:58\n"
+"POT-Creation-Date: 2025-07-06 09:40+1000\n"
+"PO-Revision-Date: 2025-07-05 23:50\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: checkins/models.py
 msgid "barcode"
-msgstr ""
+msgstr "čárový kód"
 
 #: checkins/models.py
 msgid "<Not the child instance>"
@@ -103,7 +103,7 @@ msgstr ""
 msgid "check-in time"
 msgstr ""
 
-#: checkins/models.py users/models.py
+#: checkins/models.py registration/models.py users/models.py
 msgid "tournament"
 msgstr "turnaje"
 
@@ -188,11 +188,13 @@ msgstr ""
 msgid "Make Identifiers"
 msgstr ""
 
-#: checkins/views.py templates/nav/admin_nav.html
+#: checkins/views.py registration/templates/answer_tables/teams.html
+#: templates/nav/admin_nav.html
 msgid "Speakers"
-msgstr ""
+msgstr "Mluvčí"
 
-#: checkins/views.py templates/nav/public_nav.html
+#: checkins/views.py registration/views.py templates/nav/admin_nav.html
+#: templates/nav/public_nav.html
 msgid "Adjudicators"
 msgstr "Rozhodčí"
 
@@ -219,7 +221,7 @@ msgstr ""
 
 #: checkins/views.py
 msgid "Whoops! Looks like your check-in was already revoked."
-msgstr ""
+msgstr "Jejda! Vypadá to, že vaše potvrzení přítomnosti již bylo zrušeno."
 
 #: checkins/views.py
 msgid "Whoops! Looks like you're already checked in."
@@ -229,8 +231,461 @@ msgstr ""
 msgid "You are now checked in."
 msgstr ""
 
+#. Translators: Please leave this blank, it should be left for the base Django translations.
+#: registration/form_utils.py
+msgid "Yes"
+msgstr "Ano"
+
+#. Translators: Please leave this blank, it should be left for the base Django translations.
+#: registration/form_utils.py
+msgid "No"
+msgstr "Ne"
+
+#. Translators: Please leave this blank, it should be left for the base Django translations.
+#: registration/form_utils.py
+msgid "This field is required."
+msgstr ""
+
+#: registration/forms.py
+msgid "Coach name"
+msgstr ""
+
+#: registration/forms.py
+msgid "Unseeded"
+msgstr ""
+
+#: registration/forms.py
+msgid "Free seed"
+msgstr ""
+
+#: registration/forms.py
+msgid "Half seed"
+msgstr ""
+
+#: registration/forms.py
+msgid "Full seed"
+msgstr ""
+
+#: registration/forms.py
+msgid "Full name for tab"
+msgstr ""
+
+#: registration/models.py
+msgid "content type"
+msgstr ""
+
+#: registration/models.py
+msgid "object id"
+msgstr ""
+
+#: registration/models.py
+msgid "question"
+msgstr ""
+
+#: registration/models.py
+msgid "answer"
+msgstr ""
+
+#: registration/models.py
+msgid "answers"
+msgstr ""
+
+#: registration/models.py
+msgid "checkbox"
+msgstr ""
+
+#: registration/models.py
+msgid "yes/no (dropdown)"
+msgstr ""
+
+#: registration/models.py
+msgid "integer (textbox)"
+msgstr ""
+
+#: registration/models.py
+msgid "integer scale"
+msgstr ""
+
+#: registration/models.py
+msgid "float"
+msgstr ""
+
+#: registration/models.py
+msgid "text"
+msgstr "text"
+
+#: registration/models.py
+msgid "long text"
+msgstr ""
+
+#: registration/models.py
+msgid "select one"
+msgstr ""
+
+#: registration/models.py
+msgid "select multiple"
+msgstr ""
+
+#: registration/models.py
+msgid "date + time"
+msgstr ""
+
+#: registration/models.py
+msgid "for content type"
+msgstr ""
+
+#: registration/models.py
+msgid "sequence number"
+msgstr ""
+
+#: registration/models.py
+msgid "The question displayed to participants, e.g., \"Did you agree with the decision?\""
+msgstr ""
+
+#: registration/models.py
+msgid "help text"
+msgstr ""
+
+#: registration/models.py
+msgid "Additional context for the question"
+msgstr ""
+
+#: registration/models.py users/models.py
+msgid "name"
+msgstr ""
+
+#: registration/models.py
+msgid "A short name for the question, e.g., \"Agree with decision\""
+msgstr ""
+
+#: registration/models.py
+msgid "answer type"
+msgstr ""
+
+#: registration/models.py
+msgid "required"
+msgstr ""
+
+#: registration/models.py
+msgid "Whether participants are required to fill out this field"
+msgstr ""
+
+#: registration/models.py
+msgid "minimum value"
+msgstr ""
+
+#: registration/models.py
+msgid "Minimum allowed value for numeric fields (ignored for text or boolean fields)"
+msgstr ""
+
+#: registration/models.py
+msgid "maximum value"
+msgstr ""
+
+#: registration/models.py
+msgid "Maximum allowed value for numeric fields (ignored for text or boolean fields)"
+msgstr ""
+
+#: registration/models.py
+msgid "choices"
+msgstr ""
+
+#: registration/models.py
+msgid "Permissible choices for select one/multiple fields (ignored for other fields)"
+msgstr ""
+
+#: registration/models.py
+msgid "questions"
+msgstr ""
+
+#: registration/models.py
+msgid "institution"
+msgstr ""
+
+#: registration/models.py
+msgid "team"
+msgstr "tým"
+
+#: registration/models.py
+msgid "URL key"
+msgstr ""
+
+#: registration/models.py
+msgid "created on"
+msgstr ""
+
+#: registration/models.py
+msgid "invitation"
+msgstr ""
+
+#: registration/models.py
+msgid "invitations"
+msgstr ""
+
+#: registration/templates/adjudicator_registration_form.html
+msgctxt "button"
+msgid "Register as Adjudicator"
+msgstr ""
+
+#: registration/templates/adjudicator_registration_form.html
+#: registration/templates/wizard_registration_form.html
+#: templates/registration/password_change_form.html
+#: templates/registration/password_reset_confirm.html
+msgid "Cancel and go back to the site home page"
+msgstr ""
+
+#: registration/templates/answer_tables/adjudicators.html
+msgid "Questions"
+msgstr ""
+
+#: registration/templates/answer_tables/institutions.html
+#: registration/templates/answer_tables/teams.html
+msgid "Questions for"
+msgstr ""
+
+#: registration/templates/answer_tables/institutions.html
+#: templates/nav/admin_nav.html templates/nav/assistant_nav.html
+#: templates/nav/public_nav.html
+msgid "Institutions"
+msgstr ""
+
+#: registration/templates/answer_tables/institutions.html
+msgid "Coaches"
+msgstr ""
+
+#: registration/templates/answer_tables/institutions.html
+#, python-format
+msgid "Teams Requested: <strong>%(num)s</strong>"
+msgstr ""
+
+#: registration/templates/answer_tables/institutions.html
+#, python-format
+msgid "Teams Allocated: <strong>%(num)s</strong>"
+msgstr ""
+
+#: registration/templates/answer_tables/institutions.html
+#, python-format
+msgid "Teams Registered: <strong>%(num)s</strong>"
+msgstr ""
+
+#: registration/templates/answer_tables/institutions.html
+#, python-format
+msgid "Adjudicators Requested: <strong>%(num)s</strong>"
+msgstr ""
+
+#: registration/templates/answer_tables/institutions.html
+#, python-format
+msgid "Adjudicators Allocated: <strong>%(num)s</strong>"
+msgstr ""
+
+#: registration/templates/answer_tables/institutions.html
+#, python-format
+msgid "Adjudicators Registered: <strong>%(num)s</strong>"
+msgstr ""
+
+#: registration/templates/answer_tables/institutions.html
+msgid "Save allocations"
+msgstr ""
+
+#: registration/templates/answer_tables/teams.html registration/views.py
+#: templates/nav/admin_nav.html
+msgid "Teams"
+msgstr "Týmy"
+
+#: registration/templates/coach_private_url.html
+msgid "Private URL"
+msgstr "Soukromá URL"
+
+#: registration/templates/coach_private_url.html
+#, python-format
+msgid "for %(name)s (%(institution)s)"
+msgstr ""
+
+#: registration/templates/coach_private_url.html
+#, python-format
+msgid "The URL of this page is personalised to you, %(name)s. <strong>Do not share it with anyone;</strong> anyone who knows this URL can manage participants for %(institution)s. You may bookmark this page and return here after each debate for the available actions."
+msgstr ""
+
+#: registration/templates/coach_private_url.html registration/views.py
+msgid "Register Adjudicator"
+msgstr ""
+
+#: registration/templates/coach_private_url.html
+msgid "Participant registration is not yet open"
+msgstr ""
+
+#: registration/templates/coach_private_url.html
+msgid "or distribute this link to allow members to register themselves as adjudicators:"
+msgstr ""
+
+#: registration/templates/coach_private_url.html registration/views.py
+msgid "Register Team"
+msgstr ""
+
+#: registration/templates/coach_private_url.html
+msgid "or distribute this link to allow members to register their teams:"
+msgstr ""
+
+#: registration/templates/coach_private_url.html
+msgid "View invoice"
+msgstr ""
+
+#: registration/templates/questions_edit.html
+msgid "These questions appear as extra fields for participants to answer, in feedback or registration forms."
+msgstr ""
+
+#: registration/templates/questions_edit.html
+#, python-format
+msgid "If you want to delete questions (and their associated answers), use the <a href=\"%(edit_db_url)s\" class=\"alert-link\">Edit Database</a> area."
+msgstr ""
+
+#: registration/templates/questions_edit.html
+msgid "Save Questions"
+msgstr ""
+
+#: registration/templates/team_wizard_speakers.html
+msgid "You may register speakers for the team, but if not all speakers are included, a link will be generated to let speakers register themselves to the team after submission which you can then distribute."
+msgstr ""
+
+#: registration/templates/wizard_registration_form.html
+msgctxt "button"
+msgid "Continue"
+msgstr ""
+
+#: registration/templates/wizard_registration_form.html
+msgctxt "button"
+msgid "Register"
+msgstr ""
+
+#: registration/views.py
+msgid "Register Institution"
+msgstr ""
+
+#: registration/views.py
+#, python-format
+msgid "Your institution %s has been registered!"
+msgstr ""
+
+#: registration/views.py
+msgid "Register Speaker"
+msgid_plural "Register Speakers"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: registration/views.py
+#, python-format
+msgid "from %s"
+msgstr ""
+
+#: registration/views.py
+#, python-format
+msgid "for %s"
+msgstr ""
+
+#: registration/views.py
+#, python-format
+msgid "Your team only has %(num)d speaker! Invite the other speakers to register using this link: <a href='%(link)s'>%(link)s</a>"
+msgid_plural "Your team only has %(num)d speakers! Invite the other speakers to register using this link: <a href='%(link)s'>%(link)s</a>"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: registration/views.py
+#, python-format
+msgid "Your team %s has been registered!"
+msgstr ""
+
+#: registration/views.py
+msgid "You have been registered as an adjudicator!"
+msgstr ""
+
+#: registration/views.py
+msgid "You have been registered as a speaker!"
+msgstr ""
+
+#: registration/views.py
+msgid "Institutional Registration"
+msgstr ""
+
+#: registration/views.py
+msgid "Responses"
+msgstr ""
+
+#: registration/views.py
+msgid "Name"
+msgstr ""
+
+#: registration/views.py
+msgid "Coach"
+msgstr ""
+
+#: registration/views.py
+msgid "Teams Requested"
+msgstr ""
+
+#: registration/views.py
+msgid "Teams Allocated"
+msgstr ""
+
+#: registration/views.py
+msgid "Teams Registered"
+msgstr ""
+
+#: registration/views.py
+msgid "Adjudicators Requested"
+msgstr ""
+
+#: registration/views.py
+msgid "Adjudicators Allocated"
+msgstr ""
+
+#: registration/views.py
+msgid "Adjudicators Registered"
+msgstr ""
+
+#: registration/views.py
+msgid "Successfully modified institution allocations"
+msgstr ""
+
+#: registration/views.py
+msgid "Team Registration"
+msgstr ""
+
+#: registration/views.py
+#, python-format
+msgid "Speaker %d"
+msgstr ""
+
+#: registration/views.py
+msgid "Email"
+msgstr ""
+
+#: registration/views.py
+msgid "Adjudicator Registration"
+msgstr ""
+
+#: registration/views.py
+msgid "Custom Questions"
+msgstr ""
+
+#: registration/views.py
+#, python-format
+msgid "Questions for %(model)s were successfully saved."
+msgstr ""
+
+#: registration/views.py
+msgid "No changes were made to the questions."
+msgstr ""
+
 #: settings/core.py
 msgid "Arabic"
+msgstr ""
+
+#: settings/core.py
+msgid "Asturian"
 msgstr ""
 
 #: settings/core.py
@@ -534,6 +989,10 @@ msgstr ""
 msgid "Private URLs"
 msgstr ""
 
+#: templates/nav/admin_nav.html templates/nav/public_nav.html
+msgid "Schedule"
+msgstr ""
+
 #: templates/nav/admin_nav.html
 msgid "Emails"
 msgstr ""
@@ -548,6 +1007,10 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Sides"
+msgstr ""
+
+#: templates/nav/admin_nav.html users/groups.py
+msgid "Registration"
 msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
@@ -572,7 +1035,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Comments"
-msgstr ""
+msgstr "Komentáře"
 
 #: templates/nav/admin_nav.html
 msgid "Find by Source"
@@ -584,6 +1047,10 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Unsubmitted"
+msgstr ""
+
+#: templates/nav/admin_nav.html
+msgid "Feedback Questions"
 msgstr ""
 
 #: templates/nav/admin_nav.html
@@ -601,10 +1068,6 @@ msgstr ""
 #: templates/nav/admin_nav.html
 msgid "All Teams"
 msgstr ""
-
-#: templates/nav/admin_nav.html
-msgid "Teams"
-msgstr "Týmy"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
@@ -667,10 +1130,6 @@ msgstr ""
 
 #: templates/nav/assistant_nav.html
 msgid "Participants List"
-msgstr ""
-
-#: templates/nav/assistant_nav.html templates/nav/public_nav.html
-msgid "Institutions"
 msgstr ""
 
 #: templates/nav/assistant_nav.html
@@ -756,7 +1215,7 @@ msgstr ""
 
 #: templates/nav/round_panel.html
 msgid "Draw"
-msgstr ""
+msgstr "Los"
 
 #: templates/nav/round_panel.html
 msgid "Display"
@@ -849,11 +1308,6 @@ msgctxt "button"
 msgid "Change my password"
 msgstr ""
 
-#: templates/registration/password_change_form.html
-#: templates/registration/password_reset_confirm.html
-msgid "Cancel and go back to the site home page"
-msgstr ""
-
 #: templates/registration/password_reset_complete.html
 msgctxt "page title"
 msgid "Password reset complete"
@@ -903,6 +1357,11 @@ msgstr ""
 #: templates/registration/password_reset_email.html
 #, python-format
 msgid "Hi, %(user)s!"
+msgstr ""
+
+#: templates/registration/password_reset_email.html
+#, python-format
+msgid "Your username is: %(user)s"
 msgstr ""
 
 #: templates/registration/password_reset_email.html
@@ -1004,10 +1463,6 @@ msgstr ""
 
 #: users/models.py
 msgid "user permissions"
-msgstr ""
-
-#: users/models.py
-msgid "name"
 msgstr ""
 
 #: users/models.py
@@ -1187,6 +1642,10 @@ msgid "generate debates (draw)"
 msgstr ""
 
 #: users/permissions.py
+msgid "delete debates (draw)"
+msgstr ""
+
+#: users/permissions.py
 msgid "edit debate teams (pairings)"
 msgstr ""
 
@@ -1275,23 +1734,11 @@ msgid "add debate start time"
 msgstr ""
 
 #: users/permissions.py
-msgid "view draws"
-msgstr ""
-
-#: users/permissions.py
 msgid "view draws (for the briefing room)"
 msgstr ""
 
 #: users/permissions.py
 msgid "display motion (for the briefing room)"
-msgstr ""
-
-#: users/permissions.py
-msgid "view tournament configuration"
-msgstr ""
-
-#: users/permissions.py
-msgid "edit tournament configuration"
 msgstr ""
 
 #: users/permissions.py
@@ -1328,10 +1775,6 @@ msgstr ""
 
 #: users/permissions.py
 msgid "view overview of judge feedback"
-msgstr ""
-
-#: users/permissions.py
-msgid "bulk update judge scores"
 msgstr ""
 
 #: users/permissions.py
@@ -1419,15 +1862,7 @@ msgid "view private urls"
 msgstr ""
 
 #: users/permissions.py
-msgid "view private urls email list"
-msgstr ""
-
-#: users/permissions.py
 msgid "generate private URLs"
-msgstr ""
-
-#: users/permissions.py
-msgid "send private URLs"
 msgstr ""
 
 #: users/permissions.py
@@ -1455,6 +1890,14 @@ msgid "create rounds"
 msgstr ""
 
 #: users/permissions.py
+msgid "confirm rounds"
+msgstr ""
+
+#: users/permissions.py
+msgid "silence rounds"
+msgstr ""
+
+#: users/permissions.py
 msgid "view email statuses"
 msgstr ""
 
@@ -1472,6 +1915,30 @@ msgstr ""
 
 #: users/permissions.py
 msgid "edit settings"
+msgstr ""
+
+#: users/permissions.py
+msgid "edit general questions"
+msgstr ""
+
+#: users/permissions.py
+msgid "delete general questions"
+msgstr ""
+
+#: users/permissions.py
+msgid "view answers to general questions"
+msgstr ""
+
+#: users/permissions.py
+msgid "edit events"
+msgstr ""
+
+#: users/permissions.py
+msgid "view events"
+msgstr ""
+
+#: users/permissions.py
+msgid "view registration responses"
 msgstr ""
 
 #: users/templates/account_invitation_email.html
@@ -1509,6 +1976,10 @@ msgctxt "button"
 msgid "Invite User"
 msgstr ""
 
+#: users/templates/invite_user.html
+msgid "Note: if you submit this multiple times, multiple invite emails will be sent."
+msgstr ""
+
 #: users/templates/signup.html
 msgctxt "page title"
 msgid "Create a new Account"
@@ -1529,6 +2000,10 @@ msgstr ""
 
 #: users/views.py
 msgid "Invite User"
+msgstr ""
+
+#: users/views.py
+msgid "Successfully invited user to create an account for the tournament."
 msgstr ""
 
 #: users/views.py

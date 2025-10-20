@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 {% load debate_tags i18n static %}
 
+{% block noindex %}
+  {% if pref.search_engine_indexing == "none" %}
+    <meta name="robots" content="noindex">
+  {% endif %}
+{% endblock %}
+
 {% block head-title %}<span class="emoji">👋</span>
+
 {% blocktrans trimmed with tournament=tournament.name %}
     Welcome to {{ tournament }}
 {% endblocktrans %}{% endblock %}

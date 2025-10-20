@@ -96,6 +96,7 @@ class EmailStatus(models.Model):
         SPAM = 'spamreport', _("Marked as spam")
         ASM_UNSUBSCRIBED = 'group_unsubscribe', _("Unsubscribed from group")
         ASM_RESUBSCRIBED = 'group_resubscribe', _("Resubscribed to group")
+        FAILED = 'failed', _("Failed to send")
 
     email = models.ForeignKey('notifications.SentMessage', models.CASCADE,
         verbose_name=_("email message"))

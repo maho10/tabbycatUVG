@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 22:00\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:53\n"
 "Last-Translator: philip_tc\n"
 "Language-Team: Talossan\n"
 "Language: tzl_TZL\n"
@@ -79,6 +79,14 @@ msgstr "crwdns51748:0crwdne51748:0"
 #: results/forms.py
 msgid "Mark as a duplicate speech"
 msgstr "crwdns32402:0crwdne32402:0"
+
+#: results/forms.py
+msgid "Only one team can forfeit"
+msgstr "crwdns53562:0crwdne53562:0"
+
+#: results/forms.py
+msgid "This field is required."
+msgstr "crwdns53564:0crwdne53564:0"
 
 #: results/forms.py
 #, python-format
@@ -233,6 +241,14 @@ msgid "Whether this submission represents only the submitting adjudicator on a p
 msgstr "crwdns52119:0crwdne52119:0"
 
 #: results/models.py
+msgid "forfeit"
+msgstr "crwdns53566:0crwdne53566:0"
+
+#: results/models.py
+msgid "Whether a team had forfeited the debate and so speaker scores were exceptionally not attributed."
+msgstr "crwdns53568:0crwdne53568:0"
+
+#: results/models.py
 msgid "ballot submission"
 msgstr "crwdns32464:0crwdne32464:0"
 
@@ -242,8 +258,8 @@ msgstr "crwdns32466:0crwdne32466:0"
 
 #: results/models.py
 #, python-format
-msgid "Debate is in round %(round)d but motion (%(motion)s) is not in round"
-msgstr "crwdns52377:0%(round)dcrwdnd52377:0%(motion)scrwdne52377:0"
+msgid "Debate is in %(round)s but motion (%(motion)s) is not in round"
+msgstr "crwdns53570:0%(round)scrwdnd53570:0%(motion)scrwdne53570:0"
 
 #: results/models.py
 msgid "A ballot can't be both confirmed and discarded!"
@@ -396,6 +412,30 @@ msgstr "crwdns52856:0crwdne52856:0"
 #: results/models.py
 msgid "speaker scores for criteria by adjudicator"
 msgstr "crwdns52858:0crwdne52858:0"
+
+#: results/result.py
+msgid "Inconsistent speaker order"
+msgstr "crwdns53572:0crwdne53572:0"
+
+#: results/result.py
+msgid "Inconsistent marking of duplicate (iron-person) speeches"
+msgstr "crwdns53574:0crwdne53574:0"
+
+#: results/result.py
+msgid "Winners are not identical"
+msgstr "crwdns53576:0crwdne53576:0"
+
+#: results/result.py
+msgid "Criterion scores are not identical"
+msgstr "crwdns53578:0crwdne53578:0"
+
+#: results/result.py
+msgid "Scores are not identical"
+msgstr "crwdns53580:0crwdne53580:0"
+
+#: results/result.py
+msgid "Speech ranks are not identical"
+msgstr "crwdns53582:0crwdne53582:0"
 
 #: results/tables.py
 msgid "Whether this debate's ballot has been checked in"

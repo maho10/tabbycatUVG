@@ -945,6 +945,7 @@ class PublicPassword(StringPreference):
     name = 'public_password'
     default = ''
     required = False
+    sensitive = True
 
 
 @tournament_preferences_registry.register
@@ -1057,6 +1058,21 @@ class SplitVotingBallots(BooleanPreference):
 # ==============================================================================
 public_features = Section('public_features', verbose_name=_("Public Features"))
 # ==============================================================================
+
+
+@tournament_preferences_registry.register
+class AllowSearchEngineIndexing(ChoicePreference):
+    help_text = _("Adds a flag signaling search engines to not include tournament pages in search results."
+                  "Note that it may get ignored, and the other available settings will provide greater privacy.")
+    verbose_name = _("Include site in search engines")
+    section = public_features
+    name = 'search_engine_indexing'
+    choices = (
+        ('all', _("Allow all pages to be indexed by search engines.")),
+        ('homepage-only', _("Only allow the homepage to be indexed, do not allow any other pages (e.g. tabs, ballots, etc).")),
+        ('none', _("Do not allow any pages to be indexed by search engines.")),
+    )
+    default = 'all'
 
 
 @tournament_preferences_registry.register
@@ -1330,6 +1346,7 @@ class ReplyToEmailName(StringPreference):
     section = email
     name = 'reply_to_name'
     default = "Tabulation Team"
+    sensitive = True
 
 
 @tournament_preferences_registry.register
@@ -1340,6 +1357,7 @@ class ReplyToEmailAddress(StringPreference):
     name = 'reply_to_address'
     default = ""
     field_kwargs = {'validators': [EmailValidator()]}
+    sensitive = True
 
 
 @tournament_preferences_registry.register
@@ -1351,6 +1369,7 @@ class EmailWebhookKey(StringPreference):
     default = ""
     required = False
     field_kwargs = {'validators': [validate_slug]}
+    sensitive = True
 
 
 @tournament_preferences_registry.register
@@ -1713,3 +1732,36 @@ class CodeNameGenerator(ChoicePreference):
         ('last_names', _("Last names (e.g. 'Jones & Smith')")),
     )
     default = 'emoji'
+
+
+@tournament_preferences_registry.register
+class InstitutionRegisterMessage(LongStringPreference):
+    help_text = _("Message to be displayed on the institution registration form")
+    verbose_name = _("Institution register message")
+    section = registration
+    name = 'institution_register_message'
+    default = ""
+    widget = SummernoteWidget(attrs={'height': 150, 'class': 'form-summernote'})
+    field_kwargs = {'required': False}
+
+
+@tournament_preferences_registry.register
+class AdjudicatorRegisterMessage(LongStringPreference):
+    help_text = _("Message to be displayed on the adjudicator registration form")
+    verbose_name = _("Adjudicator register message")
+    section = registration
+    name = 'adjudicator_register_message'
+    default = ""
+    widget = SummernoteWidget(attrs={'height': 150, 'class': 'form-summernote'})
+    field_kwargs = {'required': False}
+
+
+@tournament_preferences_registry.register
+class TeamRegisterMessage(LongStringPreference):
+    help_text = _("Message to be displayed on the team registration form")
+    verbose_name = _("Team register message")
+    section = registration
+    name = 'team_register_message'
+    default = ""
+    widget = SummernoteWidget(attrs={'height': 150, 'class': 'form-summernote'})
+    field_kwargs = {'required': False}

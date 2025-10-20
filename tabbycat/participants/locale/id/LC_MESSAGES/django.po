@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:59\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:52\n"
 "Last-Translator: philip_tc\n"
 "Language-Team: Indonesian\n"
 "Language: id_ID\n"
@@ -105,6 +105,30 @@ msgstr "institusi"
 msgid "tournament"
 msgstr "turnamen"
 
+#: participants/models.py
+msgid "Team slots requested"
+msgstr ""
+
+#: participants/models.py
+msgid "Team slots allocated"
+msgstr ""
+
+#: participants/models.py
+msgid "Adjudicator slots requested"
+msgstr ""
+
+#: participants/models.py
+msgid "Adjudicator slots allocated"
+msgstr ""
+
+#: participants/models.py
+msgid "tournament institution"
+msgstr ""
+
+#: participants/models.py
+msgid "tournament institutions"
+msgstr ""
+
 #. Translators: Translate ESL to the acronym for "<target language> as a second/foreign language", not "English"
 #: participants/models.py
 msgid "Name to be displayed, e.g., \"Novice\", \"ESL\""
@@ -150,6 +174,14 @@ msgstr "kategori pembicara"
 #: participants/models.py
 msgid "speaker categories"
 msgstr "kategori pembicara"
+
+#: participants/models.py
+msgid "last name"
+msgstr ""
+
+#: participants/models.py
+msgid "The last name may be used for team names or code names"
+msgstr ""
 
 #: participants/models.py
 msgid "email address"
@@ -214,6 +246,18 @@ msgstr "orang"
 #: participants/models.py
 msgid "persons"
 msgstr "orang"
+
+#: participants/models.py
+msgid "Redacted"
+msgstr "Dihapus"
+
+#: participants/models.py
+msgid "coach"
+msgstr ""
+
+#: participants/models.py
+msgid "coaches"
+msgstr ""
 
 #: participants/models.py
 msgid "full name/suffix"
@@ -316,10 +360,6 @@ msgid "Teams must have a full name if they don't use the institutional prefix."
 msgstr "Tim harus memiliki nama lengkap jika mereka tidak menggunakan nama depan institusi."
 
 #: participants/models.py
-msgid "Teams must have a short name if they don't use the institutional prefix."
-msgstr "Tim harus memiliki nama pendek jika mereka tidak menggunakan nama depan institusi."
-
-#: participants/models.py
 msgid "speaker"
 msgstr "pembicara"
 
@@ -387,6 +427,11 @@ msgstr "Nilai Pembicara<br>(sesuai urutan giliran berbicara)"
 msgid "Speaks"
 msgstr "Berbicara"
 
+#: participants/templates/adjudicator_record.html participants/views.py
+#, python-format
+msgid "Record for %(name)s"
+msgstr "Catatan Rekor untuk %(name)s"
+
 #: participants/templates/adjudicator_record.html
 #: participants/templates/team_record.html
 #, python-format
@@ -419,6 +464,11 @@ msgstr "Wilayah:"
 #: participants/templates/adjudicator_registration_card.html
 msgid "The institutional affiliations of adjudicators are not public at this tournament."
 msgstr "Afiliasi untuk institusi para juri tidak bersifat publik pada turnamen ini."
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Custom Questions:"
+msgstr ""
 
 #: participants/templates/adjudicator_registration_card.html
 #: participants/templates/team_registration_card.html
@@ -939,11 +989,6 @@ msgstr "Registrasi Tim"
 #: participants/views.py
 msgid "Results"
 msgstr "Hasil"
-
-#: participants/views.py
-#, python-format
-msgid "Record for %(name)s"
-msgstr "Catatan Rekor untuk %(name)s"
 
 #: participants/views.py
 msgid "Previous Rounds"

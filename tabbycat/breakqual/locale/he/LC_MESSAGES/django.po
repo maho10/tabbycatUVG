@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-05 07:37+1000\n"
-"PO-Revision-Date: 2023-07-04 21:47\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:50\n"
 "Last-Translator: \n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
@@ -64,6 +64,14 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "Number of breaking teams in this category"
+msgstr ""
+
+#: breakqual/models.py
+msgid "Reserve size"
+msgstr ""
+
+#: breakqual/models.py
+msgid "Number of reserve teams in this category."
 msgstr ""
 
 #: breakqual/models.py
@@ -164,6 +172,14 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "Withdrawn"
+msgstr ""
+
+#: breakqual/models.py
+msgid "Reserve"
+msgstr ""
+
+#: breakqual/models.py
+msgid "Absent"
 msgstr ""
 
 #: breakqual/models.py

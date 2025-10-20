@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:57\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:53\n"
 "Last-Translator: \n"
 "Language-Team: Talossan\n"
 "Language: tzl_TZL\n"
@@ -368,6 +368,30 @@ msgstr "crwdns51040:0crwdne51040:0"
 #: actionlog/models.py
 msgid "Saved a room manual edit"
 msgstr "crwdns51038:0crwdne51038:0"
+
+#: actionlog/models.py
+msgid "Created question"
+msgstr "crwdns53130:0crwdne53130:0"
+
+#: actionlog/models.py
+msgid "Edited question"
+msgstr "crwdns53132:0crwdne53132:0"
+
+#: actionlog/models.py
+msgid "Registered institution"
+msgstr "crwdns53134:0crwdne53134:0"
+
+#: actionlog/models.py
+msgid "Registered team"
+msgstr "crwdns53136:0crwdne53136:0"
+
+#: actionlog/models.py
+msgid "Registered adjudicator"
+msgstr "crwdns53138:0crwdne53138:0"
+
+#: actionlog/models.py
+msgid "Registered speaker"
+msgstr "crwdns53140:0crwdne53140:0"
 
 #: actionlog/models.py
 msgid "API"

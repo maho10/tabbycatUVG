@@ -81,7 +81,7 @@ class FeedbackTableBuilder(TabbycatTableBuilder):
             'tooltip': _("Feedback average"),
         }
         feedback_data = [{
-            'text': adj.feedback_score,
+            'text': self.get_formatted_adj_score(adj.feedback_score),
             'tooltip': _("This adjudicator's feedback average"),
         } for adj in adjudicators]
 

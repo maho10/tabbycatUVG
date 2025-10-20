@@ -27,8 +27,9 @@ from .utils import populate_url_keys
 
 if TYPE_CHECKING:
     from django.db.models import QuerySet
-    from django.http.response import HttpResponseRedirect
     from django.http.request import HttpRequest
+    from django.http.response import HttpResponseRedirect
+
     from tournaments.models import Tournament
 
 logger = logging.getLogger(__name__)

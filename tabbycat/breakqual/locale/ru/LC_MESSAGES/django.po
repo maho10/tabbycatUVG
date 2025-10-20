@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-05 07:37+1000\n"
-"PO-Revision-Date: 2023-07-04 21:49\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:51\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -65,6 +65,14 @@ msgstr "размер брейка"
 #: breakqual/models.py
 msgid "Number of breaking teams in this category"
 msgstr "Количество брейкающихся команд в этой категории"
+
+#: breakqual/models.py
+msgid "Reserve size"
+msgstr ""
+
+#: breakqual/models.py
+msgid "Number of reserve teams in this category."
+msgstr ""
 
 #: breakqual/models.py
 msgid "is general"
@@ -165,6 +173,14 @@ msgstr "Проиграла по броску монетки"
 #: breakqual/models.py
 msgid "Withdrawn"
 msgstr "Отозвано"
+
+#: breakqual/models.py
+msgid "Reserve"
+msgstr ""
+
+#: breakqual/models.py
+msgid "Absent"
+msgstr ""
 
 #: breakqual/models.py
 msgid "remark"

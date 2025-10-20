@@ -15,6 +15,7 @@ from .generator.bphungarian import BPHungarianDrawGenerator
 
 if TYPE_CHECKING:
     from participants.models import Team
+
     from .models import Debate
 
 

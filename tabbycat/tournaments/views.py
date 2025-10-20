@@ -381,6 +381,8 @@ class SetTournamentScheduleView(AdministratorMixin, TournamentMixin, ModelFormSe
     edit_permission = Permission.EDIT_EVENTS
     view_permission = Permission.VIEW_EVENTS
 
+    same_view = 'tournament-set-schedule'
+
     def get_formset_factory_kwargs(self):
         can_edit = has_permission(self.request.user, self.get_edit_permission(), self.tournament)
         kwargs = super().get_formset_factory_kwargs()

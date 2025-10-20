@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:56\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:51\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "Language: vi_VN\n"
@@ -22,6 +22,10 @@ msgid "Integer scales must have a minimum and maximum"
 msgstr ""
 
 #: adjfeedback/admin.py
+msgid "Maximum value must be greater than the minimum"
+msgstr ""
+
+#: adjfeedback/admin.py
 msgid "target"
 msgstr "mục tiêu"
 
@@ -34,21 +38,8 @@ msgid "source team"
 msgstr ""
 
 #: adjfeedback/admin.py
-msgid "Target"
-msgstr "Mục tiêu"
-
-#: adjfeedback/admin.py
 msgid "Source"
 msgstr "Nguồn"
-
-#: adjfeedback/admin.py
-msgid "Feedback timestamp and version"
-msgstr "Dấu thời gian và phiên bản nhận xét"
-
-#: adjfeedback/admin.py
-#, python-format
-msgid "%(timestamp)s (version %(version)s)"
-msgstr "%(timestamp)s (phiên bản %(version)s)"
 
 #: adjfeedback/admin.py
 #, python-format
@@ -94,21 +85,11 @@ msgstr "đơn"
 
 #: adjfeedback/forms.py
 msgid "panellist"
-msgstr "panellist"
+msgstr "giám khảo cánh"
 
 #: adjfeedback/forms.py
 msgid "trainee"
 msgstr "giám khảo thực tập"
-
-#. Translators: Please leave this blank, it should be left for the base Django translations.
-#: adjfeedback/forms.py
-msgid "Yes"
-msgstr ""
-
-#. Translators: Please leave this blank, it should be left for the base Django translations.
-#: adjfeedback/forms.py
-msgid "No"
-msgstr ""
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: adjfeedback/forms.py
@@ -212,114 +193,6 @@ msgid "adjudicator base score histories"
 msgstr "lịch sử điểm gốc của giám khảo"
 
 #: adjfeedback/models.py
-msgid "question"
-msgstr "câu hỏi"
-
-#: adjfeedback/models.py
-msgid "feedback"
-msgstr "phản hồi"
-
-#: adjfeedback/models.py
-msgid "answer"
-msgstr "trả lời"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback boolean answer"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback boolean answers"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback integer answer"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback integer answers"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback float answer"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback float answers"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback string answer"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback string answers"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback multiple select answer"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback multiple select answers"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "checkbox"
-msgstr "ô lựa chọn"
-
-#: adjfeedback/models.py
-msgid "yes/no (dropdown)"
-msgstr "có/không (danh sách thả xuống)"
-
-#: adjfeedback/models.py
-msgid "integer (textbox)"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "integer scale"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "float"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "text"
-msgstr "văn bản"
-
-#: adjfeedback/models.py
-msgid "long text"
-msgstr "văn bản dài"
-
-#: adjfeedback/models.py
-msgid "select one"
-msgstr "chọn một"
-
-#: adjfeedback/models.py
-msgid "select multiple"
-msgstr "chọn nhiều mục"
-
-#: adjfeedback/models.py
-msgid "tournament"
-msgstr "giải đấu"
-
-#: adjfeedback/models.py
-msgid "sequence number"
-msgstr "số thứ tự"
-
-#: adjfeedback/models.py
-msgid "The question displayed to participants, e.g., \"Did you agree with the decision?\""
-msgstr "Câu hỏi hiển thị cho người tham gia, ví dụ, \"Bạn đồng ý với quyết định này không?\""
-
-#: adjfeedback/models.py
-msgid "name"
-msgstr "tên"
-
-#: adjfeedback/models.py
-msgid "A short name for the question, e.g., \"Agree with decision\""
-msgstr "Bản ngắn của câu hỏi, ví dụ, \"Đồng ý với quyết định\""
-
-#: adjfeedback/models.py
 msgid "reference"
 msgstr "mẫu"
 
@@ -342,42 +215,6 @@ msgstr "từ đội"
 #: adjfeedback/models.py
 msgid "Teams should be asked this question"
 msgstr "Các đội nên được hỏi câu hỏi này"
-
-#: adjfeedback/models.py
-msgid "answer type"
-msgstr "loại trả lời"
-
-#: adjfeedback/models.py
-msgid "required"
-msgstr "bắt buộc"
-
-#: adjfeedback/models.py
-msgid "Whether participants are required to fill out this field"
-msgstr "Người tham gia bắt buộc điền mục này hay không"
-
-#: adjfeedback/models.py
-msgid "minimum value"
-msgstr "giá trị tối thiểu"
-
-#: adjfeedback/models.py
-msgid "Minimum allowed value for numeric fields (ignored for text or boolean fields)"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "maximum value"
-msgstr "giá trị tối đa"
-
-#: adjfeedback/models.py
-msgid "Maximum allowed value for numeric fields (ignored for text or boolean fields)"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "choices"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "Permissible choices for select one/multiple fields (ignored for other fields)"
-msgstr ""
 
 #: adjfeedback/models.py
 msgid "adjudicator feedback question"
@@ -448,6 +285,14 @@ msgid "Assigned base score"
 msgstr ""
 
 #: adjfeedback/tables.py
+msgid "Feedback average"
+msgstr ""
+
+#: adjfeedback/tables.py
+msgid "This adjudicator's feedback average"
+msgstr ""
+
+#: adjfeedback/tables.py
 msgid "The current difference between an adjudicator's base score and current score"
 msgstr ""
 
@@ -475,7 +320,7 @@ msgstr ""
 #, python-format
 msgid "View %(count)s<br>feedback"
 msgid_plural "View %(count)s<br>feedbacks"
-msgstr[0] ""
+msgstr[0] "Xem %(count)s<br>phản hồi"
 
 #: adjfeedback/tables.py
 msgid "Unsubmitted feedback ballots"
@@ -526,6 +371,10 @@ msgid "There are some problems with this feedback submission. Please review and 
 msgstr ""
 
 #: adjfeedback/templates/enter_feedback.html
+msgid "Save Feedback"
+msgstr ""
+
+#: adjfeedback/templates/enter_feedback.html
 msgid "When submitting this form your IP address will be stored for logging purposes."
 msgstr ""
 
@@ -535,7 +384,7 @@ msgstr "Tổng quan"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Latest"
-msgstr ""
+msgstr "Mới nhất"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Unsubmitted"
@@ -612,7 +461,7 @@ msgstr ""
 
 #: adjfeedback/templates/feedback_card.html
 #, python-format
-msgid "<span class=\"text-secondary small\">Received as %(as_type)s</span>"
+msgid "Received as %(as_type)s"
 msgstr ""
 
 #: adjfeedback/templates/feedback_card.html
@@ -956,4 +805,8 @@ msgstr ""
 msgid "Updated base score for %(count)d adjudicator."
 msgid_plural "Updated base scores for %(count)d adjudicators."
 msgstr[0] ""
+
+#: adjfeedback/views.py
+msgid "Custom Feedback Questions"
+msgstr ""
 

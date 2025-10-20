@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% load debate_tags add_field_css humanize static i18n %}
 
-{% block extra-head %}<meta name="robots" content="noindex" />{% endblock %}
-
+{% block noindex %}<meta name="robots" content="noindex" />{% endblock %}
 {% block page-alerts %}
 
   {% if form.scoresheets|length > 1 %}

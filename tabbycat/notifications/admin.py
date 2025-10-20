@@ -8,7 +8,7 @@ from utils.admin import ModelAdmin, TabbycatModelAdminFieldsMixin
 from .models import BulkNotification, EmailStatus, SentMessage
 
 if TYPE_CHECKING:
-    from django.db.models import QuerySet, Model
+    from django.db.models import Model, QuerySet
     from django.http.request import HttpRequest
 
 

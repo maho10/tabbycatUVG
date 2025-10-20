@@ -24,16 +24,16 @@ from motions.models import DebateTeamMotionPreference, Motion, RoundMotion
 from options.preferences import (BPAssignmentMethod, BPPositionCost, BPPullupDistribution, DrawAvoidConflicts,
     DrawOddBracket, DrawPairingMethod, DrawPullupRestriction, DrawSideAllocations)
 from participants.emoji import pick_unused_emoji
-from participants.models import Adjudicator, Institution, Person, Region, Speaker, SpeakerCategory, Team
+from participants.models import Adjudicator, Coach, Institution, Person, Region, Speaker, SpeakerCategory, Team
 from participants.utils import populate_code_names
 from privateurls.utils import populate_url_keys
-from registration.models import Answer, Question
+from registration.models import Question
 from results.models import BallotSubmission, ScoreCriterion, SpeakerScore, Submission, TeamScore
 from results.result import DebateResult, ResultError
 from standings.speakers import SpeakerStandingsGenerator
 from standings.teams import TeamStandingsGenerator
 from tournaments.models import Round, Tournament
-from users.models import Group
+from users.models import Group, Membership, UserPermission
 from users.permissions import has_permission, Permission
 from utils.misc import get_ip_address
 from venues.models import Venue, VenueCategory, VenueConstraint
@@ -514,7 +514,7 @@ class SpeakerSerializer(serializers.ModelSerializer):
     )
     _links = SpeakerLinksSerializer(source='*', read_only=True)
     barcode = serializers.CharField(source='checkin_identifier.barcode', required=False, allow_null=True)
-    answers = fields.AnswerSerializer(many=True, source='get_answers', required=False)
+    answers = fields.AnswerSerializer(many=True, required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -545,7 +545,7 @@ class SpeakerSerializer(serializers.ModelSerializer):
     def validate(self, data):
         allowed_cts = ContentType.objects.filter(Q(app_label='participants', model='speaker') | Q(app_label='participants', model='person'))
         required_questions = self.context['tournament'].question_set.filter(required=True, for_content_type_id__in=allowed_cts)
-        answers = data.get('get_answers', [])
+        answers = data.get('answers', [])
 
         if len(set(required_questions) - set(a['question'] for a in answers)) > 0:
             raise serializers.ValidationError("Answer to required question is missing")
@@ -555,7 +555,7 @@ class SpeakerSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         barcode = validated_data.pop('checkin_identifier', {}).get('barcode', None)
         url_key = validated_data.pop('url_key', None)
-        answers = validated_data.pop('get_answers', [])
+        answers = validated_data.pop('answers', [])
 
         if url_key is not None and len(url_key) != 0:  # Let an empty string be null for the uniqueness constraint
             validated_data['url_key'] = url_key
@@ -571,18 +571,12 @@ class SpeakerSerializer(serializers.ModelSerializer):
         if validated_data.get('code_name') is None:
             populate_code_names([speaker])
 
-        # Create answers
-        for answer in answers:
-            question = answer['question']
-            obj = Answer(question=question, content_object=speaker, answer=answer['answer'])
-            try:
-                obj.save()
-            except TypeError as e:
-                raise serializers.ValidationError(e)
+        save_related(fields.AnswerSerializer, answers, self.context, {'content_object': speaker})
 
         return speaker
 
     def update(self, instance, validated_data):
+        save_related(fields.AnswerSerializer, validated_data.pop('answers', []), self.context, {'content_object': instance})
         handle_update_barcode(instance, validated_data)
         return super().update(instance, validated_data)
 
@@ -618,7 +612,7 @@ class AdjudicatorSerializer(serializers.ModelSerializer):
     venue_constraints = VenueConstraintSerializer(many=True, required=False)
     _links = AdjudicatorLinksSerializer(source='*', read_only=True)
     barcode = serializers.CharField(source='checkin_identifier.barcode', required=False, allow_null=True)
-    answers = fields.AnswerSerializer(many=True, source='get_answers', required=False)
+    answers = fields.AnswerSerializer(many=True, required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -669,7 +663,7 @@ class AdjudicatorSerializer(serializers.ModelSerializer):
     def validate(self, data):
         allowed_cts = ContentType.objects.filter(Q(app_label='participants', model='adjudicator') | Q(app_label='participants', model='person'))
         required_questions = self.context['tournament'].question_set.filter(required=True, for_content_type_id__in=allowed_cts)
-        answers = data.get('get_answers', [])
+        answers = data.get('answers', [])
 
         if len(set(required_questions) - set(a['question'] for a in answers)) > 0:
             raise serializers.ValidationError("Answer to required question is missing")
@@ -680,7 +674,7 @@ class AdjudicatorSerializer(serializers.ModelSerializer):
         venue_constraints = validated_data.pop('venue_constraints', [])
         barcode = validated_data.pop('checkin_identifier', {}).get('barcode', None)
         url_key = validated_data.pop('url_key', None)
-        answers = validated_data.pop('get_answers', [])
+        answers = validated_data.pop('answers', [])
 
         if url_key is not None and len(url_key) != 0:  # Let an empty string be null for the uniqueness constraint
             validated_data['url_key'] = url_key
@@ -701,19 +695,13 @@ class AdjudicatorSerializer(serializers.ModelSerializer):
         if adj.institution is not None:
             adj.adjudicatorinstitutionconflict_set.get_or_create(institution=adj.institution)
 
-        # Create answers
-        for answer in answers:
-            question = answer['question']
-            obj = Answer(question=question, content_object=adj, answer=answer['answer'])
-            try:
-                obj.save()
-            except TypeError as e:
-                raise serializers.ValidationError(e)
+        save_related(fields.AnswerSerializer, answers, self.context, {'content_object': adj})
 
         return adj
 
     def update(self, instance, validated_data):
         save_related(VenueConstraintSerializer, validated_data.pop('venue_constraints', []), self.context, {'subject': instance})
+        save_related(fields.AnswerSerializer, validated_data.pop('answers', []), self.context, {'content_object': instance})
         handle_update_barcode(instance, validated_data)
 
         if 'base_score' in validated_data and validated_data['base_score'] != instance.base_score:
@@ -758,7 +746,7 @@ class TeamSerializer(serializers.ModelSerializer):
     )
 
     venue_constraints = VenueConstraintSerializer(many=True, required=False)
-    answers = fields.AnswerSerializer(many=True, source='get_answers', required=False)
+    answers = fields.AnswerSerializer(many=True, required=False)
 
     class Meta:
         model = Team
@@ -804,7 +792,7 @@ class TeamSerializer(serializers.ModelSerializer):
 
         allowed_cts = ContentType.objects.filter(Q(app_label='participants', model='team'))
         required_questions = self.context['tournament'].question_set.filter(required=True, for_content_type_id__in=allowed_cts)
-        answers = data.get('get_answers', [])
+        answers = data.get('answers', [])
 
         if len(set(required_questions) - set(a['question'] for a in answers)) > 0:
             raise serializers.ValidationError("Answer to required question is missing")
@@ -832,7 +820,7 @@ class TeamSerializer(serializers.ModelSerializer):
         speakers_data = validated_data.pop('speakers', [])
         break_categories = validated_data.pop('break_categories', [])
         venue_constraints = validated_data.pop('venue_constraints', [])
-        answers = validated_data.pop('get_answers', [])
+        answers = validated_data.pop('answers', [])
 
         emoji, code_name = pick_unused_emoji(validated_data['tournament'].id)
         if 'emoji' not in validated_data or validated_data.get('emoji') is None:
@@ -853,24 +841,17 @@ class TeamSerializer(serializers.ModelSerializer):
         # The data is passed to the sub-serializer so that it handles categories
         save_related(SpeakerSerializer, speakers_data, self.context, {'team': team})
         save_related(VenueConstraintSerializer, venue_constraints, self.context, {'subject': team})
+        save_related(fields.AnswerSerializer, answers, self.context, {'content_object': team})
 
         if team.institution is not None:
             team.teaminstitutionconflict_set.get_or_create(institution=team.institution)
-
-        # Create answers
-        for answer in answers:
-            question = answer['question']
-            obj = Answer(question=question, content_object=team, answer=answer['answer'])
-            try:
-                obj.save()
-            except TypeError as e:
-                raise serializers.ValidationError(e)
 
         return team
 
     def update(self, instance, validated_data):
         save_related(SpeakerSerializer, validated_data.pop('speakers', []), self.context, {'team': instance})
         save_related(VenueConstraintSerializer, validated_data.pop('venue_constraints', []), self.context, {'subject': instance})
+        save_related(fields.AnswerSerializer, validated_data.pop('answers', []), self.context, {'content_object': instance})
 
         if self.partial:
             # Avoid removing conflicts if merely PATCHing
@@ -911,6 +892,37 @@ class InstitutionSerializer(serializers.ModelSerializer):
 
 
 class PerTournamentInstitutionSerializer(InstitutionSerializer):
+    class CoachSerializer(serializers.ModelSerializer):
+        answers = fields.AnswerSerializer(many=True, required=False)
+
+        class Meta:
+            model = Coach
+            exclude = ('tournament_institution',)
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+
+            if not is_staff(kwargs.get('context')):
+                t = kwargs['context']['tournament']
+                with_permission = partial(has_permission, user=kwargs['context']['request'].user, tournament=t)
+
+                if not with_permission(permission=Permission.VIEW_PARTICIPANT_CONTACT):
+                    self.fields.pop('email')
+                    self.fields.pop('phone')
+                if not with_permission(permission=Permission.VIEW_PARTICIPANT_GENDER):
+                    self.fields.pop('gender')
+                    self.fields.pop('pronoun')
+                if not with_permission(permission=Permission.VIEW_PRIVATE_URLS):
+                    self.fields.pop('url_key')
+                if not with_permission(permission=Permission.VIEW_CHECKIN):
+                    self.fields.pop('barcode')
+
+                if not with_permission(permission=Permission.VIEW_CUSTOM_ANSWERS):
+                    self.fields.pop('answers')
+
+                if not with_permission(permission=Permission.VIEW_PARTICIPANT_DECODED) and t.pref('participant_code_names') == 'everywhere':
+                    self.fields.pop('name')
+
     teams = fields.TournamentHyperlinkedRelatedField(
         source='team_set',
         many=True,
@@ -923,6 +935,12 @@ class PerTournamentInstitutionSerializer(InstitutionSerializer):
         view_name='api-adjudicator-detail',
         required=False,
     )
+    answers = fields.AnswerSerializer(many=True, required=False, allow_null=True, source='tournament.answers')
+    coaches = CoachSerializer(many=True, required=False, allow_null=True, source='tournament.coach_set')
+    teams_requested = serializers.IntegerField(required=False, allow_null=True, source='tournament.teams_requested')
+    teams_allocated = serializers.IntegerField(required=False, allow_null=True, source='tournament.teams_allocated')
+    adjudicators_requested = serializers.IntegerField(required=False, allow_null=True, source='tournament.adjudicators_requested')
+    adjudicators_allocated = serializers.IntegerField(required=False, allow_null=True, source='tournament.adjudicators_allocated')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -1217,7 +1235,7 @@ class FeedbackSerializer(serializers.ModelSerializer):
     source = SubmitterSourceField(source='*')
     participant_submitter = fields.ParticipantSourceField(allow_null=True, required=False)
     debate = DebateHyperlinkedRelatedField(view_name='api-pairing-detail', queryset=Debate.objects.all(), lookup_url_kwarg='debate_pk')
-    answers = fields.AdjAnswerSerializer(many=True, source='get_answers', required=False)
+    answers = fields.AdjAnswerSerializer(many=True, required=False)
 
     class Meta:
         model = AdjudicatorFeedback
@@ -1238,7 +1256,7 @@ class FeedbackSerializer(serializers.ModelSerializer):
 
         source_type = 'from_team' if isinstance(source, Team) else 'from_adj'
         required_questions = AdjudicatorFeedbackQuestion.objects.filter(tournament=self.context['tournament'], required=True, **{source_type: True})
-        answers = data.get('get_answers', [])
+        answers = data.get('answers', [])
 
         if len(set(required_questions) - set(a['question'] for a in answers)) > 0:
             raise serializers.ValidationError("Answer to required question is missing")
@@ -1261,7 +1279,7 @@ class FeedbackSerializer(serializers.ModelSerializer):
         related_field = getattr(source, 'debate%s_set' % type_name)
         try:
             data['source_%s' % type_name] = related_field.get(debate=debate)
-        except related_field.rel.related_model.DoesNotExist:
+        except related_field.model.DoesNotExist:
             raise serializers.ValidationError("Source is not in debate")
 
         return super().validate(data)
@@ -1277,7 +1295,7 @@ class FeedbackSerializer(serializers.ModelSerializer):
         }
 
     def create(self, validated_data):
-        answers = validated_data.pop('get_answers', [])
+        answers = validated_data.pop('answers', [])
 
         validated_data.update(self.get_submitter_fields())
         if validated_data.get('confirmed', False):
@@ -1287,13 +1305,7 @@ class FeedbackSerializer(serializers.ModelSerializer):
         feedback = super().create(validated_data)
 
         # Create answers
-        for answer in answers:
-            question = answer['question']
-            obj = Answer(question=question, content_object=feedback, answer=answer['answer'])
-            try:
-                obj.save()
-            except TypeError as e:
-                raise serializers.ValidationError(e)
+        save_related(fields.AdjAnswerSerializer, answers, self.context, {'content_object': feedback})
 
         return feedback
 
@@ -1662,9 +1674,23 @@ class UserSerializer(serializers.ModelSerializer):
         }
 
     def create(self, validated_data):
+        tournaments = validated_data.pop('tournaments', [])
         user = self.Meta.model(**validated_data)
         user.set_password(validated_data['password'])
         user.save()
+
+        memberships = []
+        permissions = []
+        for tournament_permissions in tournaments:
+            for group in tournament_permissions['groups']:
+                if group.tournament != tournament_permissions['tournament']:
+                    raise serializers.ValidationError('Group must be within the specified tournament')
+                memberships.append(Membership(user=user, group=group))
+            permissions.extend([
+                UserPermission(user=user, permission=permission, tournament=tournament_permissions['tournament']) for permission in tournament_permissions['permissions']
+            ])
+        Membership.objects.bulk_create(memberships)
+        UserPermission.objects.bulk_create(permissions)
 
         return user
 

@@ -14,7 +14,7 @@ from draw.models import Debate
 from participants.models import Person
 from tournaments.models import Round, Tournament
 
-from .models import BulkNotification, SentMessage
+from .models import BulkNotification, EmailStatus, SentMessage
 from .utils import (AdjudicatorAssignmentEmailGenerator, BallotsEmailGenerator, MotionReleaseEmailGenerator,
                     NotificationContextGenerator, RandomizedUrlEmailGenerator, StandingsEmailGenerator,
                     TeamDrawEmailGenerator, TeamSpeakerEmailGenerator)
@@ -35,14 +35,27 @@ class NotificationQueueConsumer(SyncConsumer):
 
     @staticmethod
     def _send(messages: List[mail.EmailMultiAlternatives], records: List[SentMessage]) -> None:
-        mail.get_connection().send_messages(messages)
         SentMessage.objects.bulk_create(records)
+
+        connection = mail.get_connection(fail_silently=False)
+        failed_events = []
+
+        connection.open()
+        for message, record in zip(messages, records):
+            try:
+                message.extra_headers['X-RECORDID'] = record.id
+                connection.send_messages([message])
+            except Exception as e:
+                failed_events.append(EmailStatus(email=record, event=EmailStatus.EventType.FAILED, data={'error': str(e)}))
+        connection.close()
+
+        EmailStatus.objects.bulk_create(failed_events)
 
     @staticmethod
     def _get_from_fields(t: Tournament) -> Tuple[str, Optional[List[str]]]:
         from_email = formataddr((t.short_name, settings.DEFAULT_FROM_EMAIL))
         if t.pref('reply_to_address'):
-            return from_email, [formataddr((t.pref('reply_to_name'), t.pref('reply_to_address')))]
+            return from_email, [formataddr((t.pref('reply_to_name').strip(), t.pref('reply_to_address')))]
         return from_email, None  # Shouldn't have array of None
 
     def email(self, event: Dict[str, Union[str, BulkNotification.EventType, List[int], Dict[str, Any]]]) -> None:
@@ -96,7 +109,7 @@ class NotificationQueueConsumer(SyncConsumer):
             body = html_body.render(context)
             email = mail.EmailMultiAlternatives(
                 subject=subject.render(context), body=html2text(body),
-                from_email=from_email, to=[formataddr((recipient.name, recipient.email))],
+                from_email=from_email, to=[formataddr((recipient.name.strip(), recipient.email))],
                 reply_to=reply_to, headers={
                     'X-SMTPAPI': json.dumps({'unique_args': {'hook-id': hook_id}}),  # SendGrid-specific 'hook-id'
                 },

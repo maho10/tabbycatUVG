@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 22:00\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:50\n"
 "Last-Translator: philip_tc\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -343,6 +343,94 @@ msgstr ""
 msgid "Break category must be for the same tournament."
 msgstr ""
 
+#: tournaments/models.py
+msgid "Check-in"
+msgstr ""
+
+#: tournaments/models.py
+msgid "Briefing"
+msgstr ""
+
+#: tournaments/models.py
+msgid "Draw/motion announcement"
+msgstr ""
+
+#: tournaments/models.py
+msgid "Preparation time"
+msgstr ""
+
+#: tournaments/models.py
+msgid "Debate"
+msgstr ""
+
+#: tournaments/models.py
+msgid "Adjudication"
+msgstr ""
+
+#: tournaments/models.py
+msgid "Meal/break"
+msgstr ""
+
+#: tournaments/models.py
+msgid "Break announcement"
+msgstr ""
+
+#: tournaments/models.py
+msgid "Award ceremony"
+msgstr ""
+
+#: tournaments/models.py
+msgid "Other"
+msgstr "Andere"
+
+#: tournaments/models.py
+msgid "The tournament the event takes place in"
+msgstr ""
+
+#: tournaments/models.py
+msgid "title"
+msgstr ""
+
+#: tournaments/models.py
+msgid "e.g. \"Lunch\""
+msgstr ""
+
+#: tournaments/models.py
+msgid "event type"
+msgstr ""
+
+#: tournaments/models.py
+msgid "What sort of event this is, use \"Other\" if the type is not available"
+msgstr ""
+
+#: tournaments/models.py
+msgid "start time"
+msgstr ""
+
+#: tournaments/models.py
+msgid "The time the event starts"
+msgstr ""
+
+#: tournaments/models.py
+msgid "end time"
+msgstr ""
+
+#: tournaments/models.py
+msgid "The time at which the event ends, may be empty"
+msgstr ""
+
+#: tournaments/models.py
+msgid "If the event belongs to a specific round, which round"
+msgstr ""
+
+#: tournaments/models.py
+msgid "schedule event"
+msgstr ""
+
+#: tournaments/models.py
+msgid "schedule events"
+msgstr ""
+
 #: tournaments/templates/assistant_tournament_index.html
 msgid "Dashboard"
 msgstr ""
@@ -564,6 +652,11 @@ msgid "The draw for the next round has yet to be released"
 msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
+#: tournaments/templates/tournament_schedule_edit.html
+msgid "Schedule"
+msgstr ""
+
+#: tournaments/templates/public_tournament_index.html
 msgid "Check-Ins"
 msgstr ""
 
@@ -614,7 +707,24 @@ msgid "Enter Feedback"
 msgstr "Feedback abschicken"
 
 #: tournaments/templates/public_tournament_index.html
+msgid "Register Institution"
+msgstr ""
+
+#: tournaments/templates/public_tournament_index.html
+msgid "Register Open Team"
+msgstr ""
+
+#: tournaments/templates/public_tournament_index.html
+msgid "Register Open Adjudicator"
+msgstr ""
+
+#: tournaments/templates/public_tournament_index.html
 msgid "Tournament Staff"
+msgstr ""
+
+#: tournaments/templates/public_tournament_schedule.html
+#, python-format
+msgid "Schedule is in time zone: %(schedule_timezone_label)s"
 msgstr ""
 
 #: tournaments/templates/round_complete_check.html
@@ -832,6 +942,14 @@ msgstr ""
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Public area for <strong>%(tn)s</strong>"
+msgstr ""
+
+#: tournaments/templates/tournament_schedule_edit.html
+msgid "This page allows you to set the public schedule for the tournament."
+msgstr ""
+
+#: tournaments/templates/tournament_schedule_edit.html
+msgid "Save Schedule"
 msgstr ""
 
 #: tournaments/utils.py
@@ -1075,5 +1193,9 @@ msgstr ""
 
 #: tournaments/views.py
 msgid "Successfully set round weights for tapered scoring."
+msgstr ""
+
+#: tournaments/views.py
+msgid "Tournament Schedule"
 msgstr ""
 

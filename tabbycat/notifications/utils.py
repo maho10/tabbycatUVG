@@ -25,9 +25,10 @@ from results.utils import side_and_position_names
 
 if TYPE_CHECKING:
     from django.db.models import QuerySet
+
+    from draw.models import Debate
     from participants.models import Person
     from tournaments.models import Round, Tournament
-    from draw.models import Debate
 
 
 adj_position_names = {

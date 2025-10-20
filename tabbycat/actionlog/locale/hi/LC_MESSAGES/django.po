@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:56\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:47\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
 "Language: hi_IN\n"
@@ -367,6 +367,30 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Saved a room manual edit"
+msgstr ""
+
+#: actionlog/models.py
+msgid "Created question"
+msgstr ""
+
+#: actionlog/models.py
+msgid "Edited question"
+msgstr ""
+
+#: actionlog/models.py
+msgid "Registered institution"
+msgstr ""
+
+#: actionlog/models.py
+msgid "Registered team"
+msgstr ""
+
+#: actionlog/models.py
+msgid "Registered adjudicator"
+msgstr ""
+
+#: actionlog/models.py
+msgid "Registered speaker"
 msgstr ""
 
 #: actionlog/models.py

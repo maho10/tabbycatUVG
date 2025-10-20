@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:59\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:53\n"
 "Last-Translator: philip_tc\n"
 "Language-Team: Talossan\n"
 "Language: tzl_TZL\n"
@@ -123,6 +123,14 @@ msgid "Margin includes dissenters"
 msgstr "crwdns31204:0crwdne31204:0"
 
 #: options/preferences.py
+msgid "Any explanatory text needed to introduce the ballot form, e.g. speaker scale"
+msgstr "crwdns53400:0crwdne53400:0"
+
+#: options/preferences.py
+msgid "Ballot introduction/explanation"
+msgstr "crwdns53402:0crwdne53402:0"
+
+#: options/preferences.py
 msgid "If checked, all speaker scores, including for duplicate speeches, will be counted for team scores"
 msgstr "crwdns52085:0crwdne52085:0"
 
@@ -223,6 +231,14 @@ msgid "Pairing deviation penalty"
 msgstr "crwdns52345:0crwdne52345:0"
 
 #: options/preferences.py
+msgid "Hard preference applied by minimum cost matching to disallow pairings where a team would debate                   more than this many times on the same side. WARNING: if you set this to a low value, the draw                   algorithm may be unable to find a valid draw."
+msgstr "crwdns53404:0crwdne53404:0"
+
+#: options/preferences.py
+msgid "Maximum number of times per side"
+msgstr "crwdns53406:0crwdne53406:0"
+
+#: options/preferences.py
 msgid "How odd brackets are resolved (see documentation for further details)"
 msgstr "crwdns31236:0crwdne31236:0"
 
@@ -261,6 +277,14 @@ msgstr "crwdns31252:0crwdne31252:0"
 #: options/preferences.py
 msgid "Intermediate 2 (pre-allocated sides)"
 msgstr "crwdns31254:0crwdne31254:0"
+
+#: options/preferences.py
+msgid "Pull up from the lowest draw strength by rank"
+msgstr "crwdns53408:0crwdne53408:0"
+
+#: options/preferences.py
+msgid "Pull up from the least pulled up, then the lowest draw strength by rank"
+msgstr "crwdns53410:0crwdne53410:0"
 
 #: options/preferences.py
 msgid "How affirmative/negative positions are assigned (see documentation for further details)"
@@ -327,8 +351,12 @@ msgid "One-up-one-down"
 msgstr "crwdns31286:0crwdne31286:0"
 
 #: options/preferences.py
-msgid "Minimum cost matching"
-msgstr "crwdns52347:0crwdne52347:0"
+msgid "Minimum cost matching (pullups determined beforehand)"
+msgstr "crwdns53412:0crwdne53412:0"
+
+#: options/preferences.py
+msgid "Minimum cost matching (including pullups)"
+msgstr "crwdns53414:0crwdne53414:0"
 
 #: options/preferences.py
 msgid "If using pull-ups, restrict which teams can be pulled up. Two-team formats only. Has no effect on BP or intermediate brackets."
@@ -353,6 +381,14 @@ msgstr "crwdns35200:0crwdne35200:0"
 #: options/preferences.py
 msgid "Choose from teams with the lowest draw strength by speaks so far"
 msgstr "crwdns35202:0crwdne35202:0"
+
+#: options/preferences.py
+msgid "Penalty applied when determining which teams to pull up (for minimum cost matching)"
+msgstr "crwdns53416:0crwdne53416:0"
+
+#: options/preferences.py
+msgid "Pullup penalty"
+msgstr "crwdns53418:0crwdne53418:0"
 
 #: options/preferences.py
 msgid "In BP, how pullups are distributed. Only \"Anywhere\" is WUDC-compliant."
@@ -482,6 +518,14 @@ msgstr "crwdns52786:0crwdne52786:0"
 msgid "Choose lowest ranking teams"
 msgstr "crwdns52788:0crwdne52788:0"
 
+#: options/preferences.py
+msgid "A limit for the side imbalance, where a pairing will not be made if that requires a team to debate more times on one side than the selected number. For use with the graph generator, with 0 as disabled."
+msgstr "crwdns53420:0crwdne53420:0"
+
+#: options/preferences.py
+msgid "Maximum allowed side imbalance"
+msgstr "crwdns53422:0crwdne53422:0"
+
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Feedback"
 msgstr "crwdns31342:0crwdne31342:0"
@@ -519,8 +563,8 @@ msgid "Panellists on chairs, chairs on panellists and trainees"
 msgstr "crwdns31358:0crwdne31358:0"
 
 #: options/preferences.py
-msgid "Panellists and trainees on chairs, vice-versa"
-msgstr "crwdns51948:0crwdne51948:0"
+msgid "Panellists and trainees on chairs, chairs on panellists and trainees"
+msgstr "crwdns53424:0crwdne53424:0"
 
 #: options/preferences.py
 msgid "All adjudicators (including trainees) on each other"
@@ -699,12 +743,20 @@ msgid "Use of speech ranks"
 msgstr "crwdns52353:0crwdne52353:0"
 
 #: options/preferences.py
-msgid "How long, in minutes, after motion release does the round start (-1 to deactivate"
-msgstr "crwdns52798:0crwdne52798:0"
+msgid "How long, in minutes, after motion release does the round start (-1 to deactivate)"
+msgstr "crwdns53426:0crwdne53426:0"
 
 #: options/preferences.py
 msgid "Preparation Time"
 msgstr "crwdns52800:0crwdne52800:0"
+
+#: options/preferences.py
+msgid "Whether there should be an option in ballot forms to mark a team as having forfeitted a round, rendering the debate win/loss without speaker scores"
+msgstr "crwdns53428:0crwdne53428:0"
+
+#: options/preferences.py
+msgid "Enable forfeits"
+msgstr "crwdns53430:0crwdne53430:0"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Standings"
@@ -955,6 +1007,10 @@ msgid "Only results entry"
 msgstr "crwdns31542:0crwdne31542:0"
 
 #: options/preferences.py
+msgid "No access"
+msgstr "crwdns53432:0crwdne53432:0"
+
+#: options/preferences.py
 msgid "Whether participants can check themselves in/out through their private URL."
 msgstr "crwdns31544:0crwdne31544:0"
 
@@ -1021,6 +1077,26 @@ msgstr "crwdns52091:0crwdne52091:0"
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Public Features"
 msgstr "crwdns31572:0crwdne31572:0"
+
+#: options/preferences.py
+msgid "Adds a flag signaling search engines to not include tournament pages in search results.Note that it may get ignored, and the other available settings will provide greater privacy."
+msgstr "crwdns53434:0crwdne53434:0"
+
+#: options/preferences.py
+msgid "Include site in search engines"
+msgstr "crwdns53436:0crwdne53436:0"
+
+#: options/preferences.py
+msgid "Allow all pages to be indexed by search engines."
+msgstr "crwdns53438:0crwdne53438:0"
+
+#: options/preferences.py
+msgid "Only allow the homepage to be indexed, do not allow any other pages (e.g. tabs, ballots, etc)."
+msgstr "crwdns53440:0crwdne53440:0"
+
+#: options/preferences.py
+msgid "Do not allow any pages to be indexed by search engines."
+msgstr "crwdns53442:0crwdne53442:0"
 
 #: options/preferences.py
 msgid "Enables the public page listing all participants in the tournament"
@@ -1145,6 +1221,14 @@ msgstr "crwdns31632:0crwdne31632:0"
 #: options/preferences.py
 msgid "Enable public view of unsubmitted feedback"
 msgstr "crwdns31634:0crwdne31634:0"
+
+#: options/preferences.py
+msgid "Enables the public page showing the schedule"
+msgstr "crwdns53444:0crwdne53444:0"
+
+#: options/preferences.py
+msgid "Enable public view of shedule"
+msgstr "crwdns53446:0crwdne53446:0"
 
 #: options/preferences.py
 msgid "List of tournament staff, to be displayed on the tournament home page. Leave this blank or with the default text if you want to not show this information."
@@ -1386,6 +1470,178 @@ msgstr "crwdns51604:0crwdne51604:0"
 msgid "Enable API access"
 msgstr "crwdns51606:0crwdne51606:0"
 
+#: options/preferences.py options/templates/preferences_index.html
+msgid "Registration"
+msgstr "crwdns53448:0crwdne53448:0"
+
+#: options/preferences.py
+msgid "How many speakers should each team have"
+msgstr "crwdns53450:0crwdne53450:0"
+
+#: options/preferences.py
+msgid "Speakers per team"
+msgstr "crwdns53452:0crwdne53452:0"
+
+#: options/preferences.py
+msgid "How should team names be assigned"
+msgstr "crwdns53454:0crwdne53454:0"
+
+#: options/preferences.py
+msgid "Team name standard"
+msgstr "crwdns53456:0crwdne53456:0"
+
+#: options/preferences.py
+msgid "Assigned by user"
+msgstr "crwdns53458:0crwdne53458:0"
+
+#: options/preferences.py
+msgid "Alphabetical (Team A, Team B, ...)"
+msgstr "crwdns53460:0crwdne53460:0"
+
+#: options/preferences.py
+msgid "Numerical (Team 1, Team 2, ...)"
+msgstr "crwdns53462:0crwdne53462:0"
+
+#: options/preferences.py
+msgid "Speaker initials (Team CZ, Team BT, ...)"
+msgstr "crwdns53464:0crwdne53464:0"
+
+#: options/preferences.py
+msgid "Which fields should teams be allowed to submit, in addition to fields with handling through other settings."
+msgstr "crwdns53466:0crwdne53466:0"
+
+#: options/preferences.py
+msgid "Customizable team fields"
+msgstr "crwdns53468:0crwdne53468:0"
+
+#: options/preferences.py
+msgid "Prefix name with institution"
+msgstr "crwdns53470:0crwdne53470:0"
+
+#: options/preferences.py
+msgid "Break categories"
+msgstr "crwdns53472:0crwdne53472:0"
+
+#: options/preferences.py
+msgid "Seed"
+msgstr "crwdns53474:0crwdne53474:0"
+
+#: options/preferences.py
+msgid "Emoji"
+msgstr "crwdns53476:0crwdne53476:0"
+
+#: options/preferences.py
+msgid "Which fields should speakers submit, in addition to fields with handling through other settings."
+msgstr "crwdns53478:0crwdne53478:0"
+
+#: options/preferences.py
+msgid "Customizable speaker fields"
+msgstr "crwdns53480:0crwdne53480:0"
+
+#: options/preferences.py
+msgid "Email address"
+msgstr "crwdns53482:0crwdne53482:0"
+
+#: options/preferences.py
+msgid "Phone number"
+msgstr "crwdns53484:0crwdne53484:0"
+
+#: options/preferences.py
+msgid "Gender"
+msgstr "crwdns53486:0crwdne53486:0"
+
+#: options/preferences.py
+msgid "Public speaker categories"
+msgstr "crwdns53488:0crwdne53488:0"
+
+#: options/preferences.py
+msgid "Which fields should adjudicators be allowed to submit"
+msgstr "crwdns53490:0crwdne53490:0"
+
+#: options/preferences.py
+msgid "Customizable adjudicator fields"
+msgstr "crwdns53492:0crwdne53492:0"
+
+#: options/preferences.py
+msgid "Allow institutions to register for the tournament"
+msgstr "crwdns53494:0crwdne53494:0"
+
+#: options/preferences.py
+msgid "Enable institutional registration"
+msgstr "crwdns53496:0crwdne53496:0"
+
+#: options/preferences.py
+msgid "Allow institutions to register participants (up to their allocated slots)"
+msgstr "crwdns53498:0crwdne53498:0"
+
+#: options/preferences.py
+msgid "Enable institutional participant registration"
+msgstr "crwdns53500:0crwdne53500:0"
+
+#: options/preferences.py
+msgid "Whether to require institutions to declare the number of teams and adjudicators it wishes to send with approval required before registering."
+msgstr "crwdns53502:0crwdne53502:0"
+
+#: options/preferences.py
+msgid "Use participant slots"
+msgstr "crwdns53504:0crwdne53504:0"
+
+#: options/preferences.py
+msgid "Allow teams to register independently to an institution"
+msgstr "crwdns53506:0crwdne53506:0"
+
+#: options/preferences.py
+msgid "Enable open team registration"
+msgstr "crwdns53508:0crwdne53508:0"
+
+#: options/preferences.py
+msgid "Allow adjudicators to register independently to an institution"
+msgstr "crwdns53510:0crwdne53510:0"
+
+#: options/preferences.py
+msgid "Enable open adjudicator registration"
+msgstr "crwdns53512:0crwdne53512:0"
+
+#: options/preferences.py
+msgid "If using code names, how should they be generated"
+msgstr "crwdns53514:0crwdne53514:0"
+
+#: options/preferences.py
+msgid "Code name standard"
+msgstr "crwdns53516:0crwdne53516:0"
+
+#: options/preferences.py
+msgid "Emojis"
+msgstr "crwdns53518:0crwdne53518:0"
+
+#: options/preferences.py
+msgid "Last names (e.g. 'Jones & Smith')"
+msgstr "crwdns53520:0crwdne53520:0"
+
+#: options/preferences.py
+msgid "Message to be displayed on the institution registration form"
+msgstr "crwdns53522:0crwdne53522:0"
+
+#: options/preferences.py
+msgid "Institution register message"
+msgstr "crwdns53524:0crwdne53524:0"
+
+#: options/preferences.py
+msgid "Message to be displayed on the adjudicator registration form"
+msgstr "crwdns53526:0crwdne53526:0"
+
+#: options/preferences.py
+msgid "Adjudicator register message"
+msgstr "crwdns53528:0crwdne53528:0"
+
+#: options/preferences.py
+msgid "Message to be displayed on the team registration form"
+msgstr "crwdns53530:0crwdne53530:0"
+
+#: options/preferences.py
+msgid "Team register message"
+msgstr "crwdns53532:0crwdne53532:0"
+
 #: options/presets.py
 msgid "Enable Public Information"
 msgstr "crwdns35584:0crwdne35584:0"
@@ -1533,6 +1789,10 @@ msgstr "crwdns31822:0crwdne31822:0"
 #: options/templates/preferences_index.html
 msgid "How and where are motions used"
 msgstr "crwdns51852:0crwdne51852:0"
+
+#: options/templates/preferences_index.html
+msgid "How participants can register for the tournament"
+msgstr "crwdns53534:0crwdne53534:0"
 
 #: options/templates/preferences_index.html
 msgid "When to release a public tab is made visible and what data it shows"

@@ -44,6 +44,8 @@ from itertools import product
 from statistics import mean
 from typing import TYPE_CHECKING, Union
 
+from django.utils.translation import gettext_lazy as _
+
 from adjallocation.allocation import AdjudicatorAllocation
 from adjallocation.models import DebateAdjudicator
 from draw.types import DebateSide
@@ -54,8 +56,8 @@ from .scoresheet import (HighPointWinsRequiredScoresheet, LowPointWinsAllowedSco
 from .utils import side_and_position_names
 
 if TYPE_CHECKING:
-    from tournaments.models import Tournament
     from participants.models import Adjudicator
+    from tournaments.models import Tournament
 
     from .models import SpeakerScore, SpeakerScoreByAdj
 
@@ -726,12 +728,14 @@ class DebateResultWithScoresMixin:
             if cur_speaker is None:
                 self.set_speaker(side, pos, result.get_speaker(side, pos))
             elif result.get_speaker(side, pos) != cur_speaker:
-                errors.append(ResultError("Inconsistent speaker order", "speaker", side, pos))
+                errors.append(ResultError(_("Inconsistent speaker order"), "speaker", side, pos))
 
             if not self.get_ghost(side, pos) and result.get_ghost(side, pos):
                 self.set_ghost(side, pos, result.get_ghost(side, pos))
             elif self.get_ghost(side, pos) and not result.get_ghost(side, pos):
-                errors.append(ResultError("Inconsistent ghost order", "ghost", side, pos))
+                errors.append(
+                    ResultError(_("Inconsistent marking of duplicate (iron-person) speeches"), "ghost", side, pos),
+                )
 
         return errors
 
@@ -940,7 +944,7 @@ class ConsensusDebateResult(BaseDebateResult):
                 if self.get_winner() is None or len(self.get_winner()) == 0:
                     self.set_winners(result.scoresheet.winners())
                 elif self.get_winner() != result.scoresheet.winners():
-                    errors.append(ResultError("Winners are not identical", "winners", result.scoresheet.winners(), None))
+                    errors.append(ResultError(_("Winners are not identical"), "winners", result.scoresheet.winners(), None))
 
         for error in errors:
             key, side, pos = error.args[1:]
@@ -1029,17 +1033,17 @@ class ConsensusDebateResultWithScores(DebateResultWithScoresMixin, ConsensusDeba
                 if self.get_criterion_score(side, pos, criterion) is None:
                     self.set_criterion_score(side, pos, criterion, result.get_criterion_score(side, pos, criterion))
                 elif self.get_criterion_score(side, pos, criterion) != result.get_criterion_score(side, pos, criterion):
-                    errors.append(ResultError('Criterion scores are not identical', 'criterion', side, pos, criterion))
+                    errors.append(ResultError(_('Criterion scores are not identical'), 'criterion', side, pos, criterion))
 
             if self.get_score(side, pos) is None:
                 self.set_score(side, pos, result.get_score(side, pos))
             elif self.get_score(side, pos) != result.get_score(side, pos):
-                errors.append(ResultError('Scores are not identical', 'scores', side, pos))
+                errors.append(ResultError(_('Scores are not identical'), 'scores', side, pos))
 
             if self.get_speaker_rank(side, pos) is None:
                 self.set_speaker_rank(side, pos, result.get_speaker_rank(side, pos))
             elif self.get_speaker_rank(side, pos) != result.get_speaker_rank(side, pos):
-                errors.append(ResultError('Speech ranks are not identical', 'speaker_ranks', side, pos))
+                errors.append(ResultError(_('Speech ranks are not identical'), 'speaker_ranks', side, pos))
         return errors
 
     def get_speaker_rank(self, side: str, position: int) -> int:

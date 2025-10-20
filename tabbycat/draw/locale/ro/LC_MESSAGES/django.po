@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:57\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:48\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
@@ -39,6 +39,15 @@ msgstr[2] ""
 
 #: draw/apps.py draw/views.py
 msgid "Draw"
+msgstr ""
+
+#: draw/forms.py
+msgid "Full round name"
+msgstr ""
+
+#: draw/forms.py
+#, python-format
+msgid "You must type '%s' to confirm draw and results deletion."
 msgstr ""
 
 #: draw/generator/__init__.py

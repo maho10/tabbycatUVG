@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 if TYPE_CHECKING:
     from django.conf import settings
+
     from tournaments.models import Tournament
 
 PERM_CACHE_KEY = "user_%d_%s_%s_permission"

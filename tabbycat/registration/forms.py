@@ -4,7 +4,7 @@ from django import forms
 from django.utils.text import capfirst
 from django.utils.translation import gettext_lazy as _
 
-from participants.emoji import EMOJI_RANDOM_FIELD_CHOICES
+from participants.emoji import EMOJI_RANDOM_FIELD_CHOICES, pick_unused_emoji
 from participants.models import Adjudicator, Coach, Institution, Speaker, Team, TournamentInstitution
 from privateurls.utils import populate_url_keys
 
@@ -57,7 +57,7 @@ class InstitutionCoachForm(CustomQuestionsFormMixin, forms.ModelForm):
         model = Coach
         fields = ('name', 'email')
         labels = {
-            'name': _('Coach name'),
+            'name': _('Name of primary contact'),
         }
 
     def save(self):
@@ -109,11 +109,21 @@ class TeamForm(CustomQuestionsFormMixin, forms.ModelForm):
                 (3, _("Full seed")),
             ), help_text=self.fields['seed'].help_text)
 
+        if 'break_categories' in self.fields:
+            bcs = self.tournament.breakcategory_set.exclude(is_general=True)
+            if len(bcs) == 0:
+                self.fields.pop('break_categories')
+            else:
+                self.fields['break_categories'].queryset = bcs
+
         self.add_question_fields()
 
     class Meta:
         model = Team
         fields = ('tournament', 'reference', 'institution', 'use_institution_prefix', 'code_name', 'emoji', 'seed', 'break_categories')
+        labels = {
+            'reference': _("Team name (excluding institution)"),
+        }
         widgets = {
             'tournament': forms.HiddenInput(),
         }
@@ -127,8 +137,15 @@ class TeamForm(CustomQuestionsFormMixin, forms.ModelForm):
         if 'use_institution_prefix' not in self.tournament.pref('reg_team_fields') and self.tournament.pref('team_name_generator') != 'user':
             self.instance.use_institution_prefix = bool(self.institution)
 
+        if not self.cleaned_data.get('emoji', None):
+            self.instance.emoji = pick_unused_emoji(tournament_id=self.tournament.id)[0]
+
         obj = super().save()
         self.save_answers(obj)
+
+        obj.break_categories.set(self.tournament.breakcategory_set.filter(is_general=True))
+        if obj.institution:
+            obj.teaminstitutionconflict_set.create(institution=obj.institution)
         return obj
 
 
@@ -157,6 +174,9 @@ class SpeakerForm(CustomQuestionsFormMixin, forms.ModelForm):
     class Meta:
         model = Speaker
         fields = ('name', 'last_name', 'email', 'phone', 'gender', 'categories')
+        labels = {
+            'name': _("Full name for tab"),
+        }
 
     def save(self, commit=True):
         self.instance.team = self.team
@@ -190,6 +210,9 @@ class AdjudicatorForm(CustomQuestionsFormMixin, forms.ModelForm):
     class Meta:
         model = Adjudicator
         fields = ('name', 'institution', 'email', 'phone', 'gender')
+        labels = {
+            'name': _("Full name for tab"),
+        }
 
     def save(self):
         self.instance.tournament = self.tournament
@@ -199,6 +222,9 @@ class AdjudicatorForm(CustomQuestionsFormMixin, forms.ModelForm):
         obj = super().save()
         populate_url_keys([obj])
         self.save_answers(obj)
+
+        if obj.institution:
+            obj.adjudicatorinstitutionconflict_set.create(institution=obj.institution)
         return obj
 
 

@@ -108,6 +108,8 @@ class BasePowerPairedDrawGenerator(BasePairDrawGenerator):
         brackets = self._make_raw_brackets()
         self.resolve_odd_brackets(brackets)  # operates in-place
 
+        self.update_subranks(brackets)
+
         pairings = self.generate_pairings(brackets)
         self.avoid_conflicts(pairings)  # operates in-place
 
@@ -282,13 +284,16 @@ class BasePowerPairedDrawGenerator(BasePairDrawGenerator):
             # if nothing worked, add a "didn't work" flag
             self.add_team_flag(teams[0], "no_bub_updn")
 
+    def update_subranks(self, brackets):
+        pass
+
 
 class GraphCostMixin:
 
     def get_n_teams(self, teams: list['Team']) -> int:
         # Use max subrank to get the penalties for match deviations;
         # necessary for enumerated seed values
-        return max([t.subrank for t in teams if t.subrank is not None])
+        return max([t.subrank for t in teams if t.subrank is not None], default=0)
 
     def assignment_cost(self, t1, t2, size, bracket=None) -> Optional[int]:
         penalty = super().assignment_cost(t1, t2, size)
@@ -301,23 +306,28 @@ class GraphCostMixin:
 
         # Add penalty for deviations in the pairing method
         if self.options["pairing_method"] != "random":
-            subpool_penalty_func = self.get_option_function("pairing_method", self.PAIRING_FUNCTIONS)
-
-            # Set the subrank to be last for pulled-up teams
-            for team in [t1, t2]:
-                if team.subrank is None:
-                    team.subrank = size
-
-            penalty += subpool_penalty_func([t1, t2], size, bracket) * self.options["pairing_penalty"]
+            penalty += self.calculate_pairing_penalty(t1, t2, size, bracket)
         return penalty
+
+    def calculate_pairing_penalty(self, t1, t2, size, bracket=None) -> int:
+        subpool_penalty_func = self.get_option_function("pairing_method", self.PAIRING_FUNCTIONS)
+
+        # Set the subrank to be last for pulled-up teams
+        subranks = []
+        for t in [t1, t2]:
+            if t.subrank is None:
+                subranks.append(size)
+            else:
+                subranks.append(t.subrank)
+        return subpool_penalty_func(subranks, size, bracket) * self.options["pairing_penalty"]
 
     @staticmethod
     def _pairings_slide(teams, size: int, bracket: Optional[int] = None) -> int:
-        return abs(abs(teams[0].subrank - teams[1].subrank) - size // 2)
+        return abs(abs(teams[0] - teams[1]) - size // 2)
 
     @staticmethod
     def _pairings_fold(teams, size: int, bracket: Optional[int] = None) -> int:
-        return abs(teams[0].subrank + teams[1].subrank - 1 - size)
+        return abs(teams[0] + teams[1] - 1 - size)
 
     @staticmethod
     def _pairings_random(teams, size: int, bracket: Optional[int] = None) -> int:
@@ -325,13 +335,25 @@ class GraphCostMixin:
 
     @staticmethod
     def _pairings_adjacent(teams, size: int, bracket: Optional[int] = None) -> int:
-        return abs(teams[0].subrank - teams[1].subrank) - 1
+        return abs(teams[0] - teams[1]) - 1
 
     @classmethod
     def _pairings_fold_top_adjacent_rest(cls, teams, size: int, bracket: Optional[int] = None) -> int:
         if bracket == 0:
             return cls._pairings_fold(teams, size)
         return cls._pairings_adjacent(teams, size)
+
+    def update_subranks(self, brackets):
+        for teams in brackets.values():
+            if len(teams) and (min_val := getattr(teams[0], 'subrank', None)) is not None:
+                for i, team in enumerate(teams, start=1):
+                    if getattr(team, 'subrank', None) is not None:
+                        team.subrank -= min_val - 1
+                    else:
+                        team.subrank = i
+
+    def room_rank_ordering(self, p):
+        return min([t.subrank for t in p if t.subrank is not None], default=0)
 
 
 class AustralsPairingMixin:
@@ -465,6 +487,9 @@ class GraphPowerPairedDrawGenerator(GraphCostMixin, GraphGeneratorMixin, BasePow
 class SingleGraphPowerPairedDrawGenerator(GraphCostMixin, GraphGeneratorMixin, BasePowerPairedDrawGenerator):
 
     def generate(self):
+        max_points = max([t.points for t in self.teams if t.points is not None], default=0)
+        self.n_teams_per_points = {i: len([t for t in self.teams if t.points == i]) for i in range(max_points+1)}
+
         self.annotate_team_pullup_precedence(self.teams)
         pairings = self.generate_pairings({0: list(self.teams)})
 
@@ -477,31 +502,55 @@ class SingleGraphPowerPairedDrawGenerator(GraphCostMixin, GraphGeneratorMixin, B
         return draw
 
     def assignment_cost(self, t1, t2, size, bracket=None) -> Optional[int]:
+        min_points = min(t1.points, t2.points)
+        max_points = max(t1.points, t2.points)
+        size = self.n_teams_per_points[max_points]
         penalty = super().assignment_cost(t1, t2, size)
         if penalty is None:
             return None
 
         # Add penalty for pulling up
-        if (is_pullup := abs(t1.points - t2.points)) >= 1:
-            if is_pullup > 1:  # Don't allow pulling up more than one bracket
+        if (is_pullup := max_points - min_points) >= 1:
+            if is_pullup > 1 and any(n_teams != 0 for points, n_teams in self.n_teams_per_points.items() if min_points < points < max_points):
+                # Don't allow pulling up more than one bracket (all in between are empty)
                 return None
 
             pullup_team = min([t1, t2], key=attrgetter('points'))  # Include penalty for the pulled up team
             penalty += pullup_team.pullup_magnitude
         return penalty
 
+    def calculate_pairing_penalty(self, t1, t2, size, bracket=None) -> int:
+        subpool_penalty_func = self.get_option_function("pairing_method", self.PAIRING_FUNCTIONS)
+
+        # Set the subrank to be last for pulled-up teams
+        if t1.points != t2.points:
+            team_in_bracket = max([t1, t2], key=attrgetter('points'))
+            return subpool_penalty_func([team_in_bracket.subrank, size+1], size+1, bracket) * self.options["pairing_penalty"]
+
+        return subpool_penalty_func([t1.subrank, t2.subrank], size, bracket) * self.options["pairing_penalty"]
+
     def annotate_team_pullup_precedence(self, teams):
         sort_function = self.get_option_function("odd_bracket", self.ODD_BRACKET_FUNCTIONS)
 
         for n_points, bracket_group in groupby(teams, key=attrgetter('points')):
             bracket = list(bracket_group)
-            i = 1
+            i = 0
             current_cost = 0
             for team in sorted(bracket, key=lambda t: sort_function(t, size=len(bracket))):
+                team.pullup_magnitude = i * self.options['pullup_penalty']
+
                 if (new_cost := sort_function(team, size=len(bracket))) != current_cost:
                     current_cost = new_cost
                     i += 1
-                team.pullup_magnitude = i * self.options['pullup_penalty']
+
+    def room_rank_ordering(self, p):
+        return (
+            -max([t.points for t in p if t.points is not None], default=0),  # First by points descending
+            min([t.subrank for t in p if t.subrank is not None and t.points == max(q.points for q in p)], default=0),  # Then by subrank of highest ranked team
+        )
+
+    def get_bracket(self, pairing, points):
+        return max([t.points for t in pairing])
 
     # Pullup penalty methods
     @staticmethod

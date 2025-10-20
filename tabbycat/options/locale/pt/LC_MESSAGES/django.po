@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:59\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:51\n"
 "Last-Translator: philip_tc\n"
 "Language-Team: Portuguese\n"
 "Language: pt_PT\n"
@@ -123,6 +123,14 @@ msgid "Margin includes dissenters"
 msgstr ""
 
 #: options/preferences.py
+msgid "Any explanatory text needed to introduce the ballot form, e.g. speaker scale"
+msgstr ""
+
+#: options/preferences.py
+msgid "Ballot introduction/explanation"
+msgstr ""
+
+#: options/preferences.py
 msgid "If checked, all speaker scores, including for duplicate speeches, will be counted for team scores"
 msgstr ""
 
@@ -223,6 +231,14 @@ msgid "Pairing deviation penalty"
 msgstr ""
 
 #: options/preferences.py
+msgid "Hard preference applied by minimum cost matching to disallow pairings where a team would debate                   more than this many times on the same side. WARNING: if you set this to a low value, the draw                   algorithm may be unable to find a valid draw."
+msgstr ""
+
+#: options/preferences.py
+msgid "Maximum number of times per side"
+msgstr ""
+
+#: options/preferences.py
 msgid "How odd brackets are resolved (see documentation for further details)"
 msgstr ""
 
@@ -260,6 +276,14 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Intermediate 2 (pre-allocated sides)"
+msgstr ""
+
+#: options/preferences.py
+msgid "Pull up from the lowest draw strength by rank"
+msgstr ""
+
+#: options/preferences.py
+msgid "Pull up from the least pulled up, then the lowest draw strength by rank"
 msgstr ""
 
 #: options/preferences.py
@@ -327,7 +351,11 @@ msgid "One-up-one-down"
 msgstr ""
 
 #: options/preferences.py
-msgid "Minimum cost matching"
+msgid "Minimum cost matching (pullups determined beforehand)"
+msgstr ""
+
+#: options/preferences.py
+msgid "Minimum cost matching (including pullups)"
 msgstr ""
 
 #: options/preferences.py
@@ -352,6 +380,14 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Choose from teams with the lowest draw strength by speaks so far"
+msgstr ""
+
+#: options/preferences.py
+msgid "Penalty applied when determining which teams to pull up (for minimum cost matching)"
+msgstr ""
+
+#: options/preferences.py
+msgid "Pullup penalty"
 msgstr ""
 
 #: options/preferences.py
@@ -482,6 +518,14 @@ msgstr ""
 msgid "Choose lowest ranking teams"
 msgstr ""
 
+#: options/preferences.py
+msgid "A limit for the side imbalance, where a pairing will not be made if that requires a team to debate more times on one side than the selected number. For use with the graph generator, with 0 as disabled."
+msgstr ""
+
+#: options/preferences.py
+msgid "Maximum allowed side imbalance"
+msgstr ""
+
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Feedback"
 msgstr "Avaliação de juiz"
@@ -519,7 +563,7 @@ msgid "Panellists on chairs, chairs on panellists and trainees"
 msgstr ""
 
 #: options/preferences.py
-msgid "Panellists and trainees on chairs, vice-versa"
+msgid "Panellists and trainees on chairs, chairs on panellists and trainees"
 msgstr ""
 
 #: options/preferences.py
@@ -699,11 +743,19 @@ msgid "Use of speech ranks"
 msgstr ""
 
 #: options/preferences.py
-msgid "How long, in minutes, after motion release does the round start (-1 to deactivate"
+msgid "How long, in minutes, after motion release does the round start (-1 to deactivate)"
 msgstr ""
 
 #: options/preferences.py
 msgid "Preparation Time"
+msgstr ""
+
+#: options/preferences.py
+msgid "Whether there should be an option in ballot forms to mark a team as having forfeitted a round, rendering the debate win/loss without speaker scores"
+msgstr ""
+
+#: options/preferences.py
+msgid "Enable forfeits"
 msgstr ""
 
 #: options/preferences.py options/templates/preferences_index.html
@@ -955,6 +1007,10 @@ msgid "Only results entry"
 msgstr ""
 
 #: options/preferences.py
+msgid "No access"
+msgstr ""
+
+#: options/preferences.py
 msgid "Whether participants can check themselves in/out through their private URL."
 msgstr ""
 
@@ -1020,6 +1076,26 @@ msgstr ""
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Public Features"
+msgstr ""
+
+#: options/preferences.py
+msgid "Adds a flag signaling search engines to not include tournament pages in search results.Note that it may get ignored, and the other available settings will provide greater privacy."
+msgstr ""
+
+#: options/preferences.py
+msgid "Include site in search engines"
+msgstr ""
+
+#: options/preferences.py
+msgid "Allow all pages to be indexed by search engines."
+msgstr ""
+
+#: options/preferences.py
+msgid "Only allow the homepage to be indexed, do not allow any other pages (e.g. tabs, ballots, etc)."
+msgstr ""
+
+#: options/preferences.py
+msgid "Do not allow any pages to be indexed by search engines."
 msgstr ""
 
 #: options/preferences.py
@@ -1144,6 +1220,14 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Enable public view of unsubmitted feedback"
+msgstr ""
+
+#: options/preferences.py
+msgid "Enables the public page showing the schedule"
+msgstr ""
+
+#: options/preferences.py
+msgid "Enable public view of shedule"
 msgstr ""
 
 #: options/preferences.py
@@ -1386,6 +1470,178 @@ msgstr ""
 msgid "Enable API access"
 msgstr ""
 
+#: options/preferences.py options/templates/preferences_index.html
+msgid "Registration"
+msgstr ""
+
+#: options/preferences.py
+msgid "How many speakers should each team have"
+msgstr ""
+
+#: options/preferences.py
+msgid "Speakers per team"
+msgstr ""
+
+#: options/preferences.py
+msgid "How should team names be assigned"
+msgstr ""
+
+#: options/preferences.py
+msgid "Team name standard"
+msgstr ""
+
+#: options/preferences.py
+msgid "Assigned by user"
+msgstr ""
+
+#: options/preferences.py
+msgid "Alphabetical (Team A, Team B, ...)"
+msgstr ""
+
+#: options/preferences.py
+msgid "Numerical (Team 1, Team 2, ...)"
+msgstr ""
+
+#: options/preferences.py
+msgid "Speaker initials (Team CZ, Team BT, ...)"
+msgstr ""
+
+#: options/preferences.py
+msgid "Which fields should teams be allowed to submit, in addition to fields with handling through other settings."
+msgstr ""
+
+#: options/preferences.py
+msgid "Customizable team fields"
+msgstr ""
+
+#: options/preferences.py
+msgid "Prefix name with institution"
+msgstr ""
+
+#: options/preferences.py
+msgid "Break categories"
+msgstr ""
+
+#: options/preferences.py
+msgid "Seed"
+msgstr ""
+
+#: options/preferences.py
+msgid "Emoji"
+msgstr ""
+
+#: options/preferences.py
+msgid "Which fields should speakers submit, in addition to fields with handling through other settings."
+msgstr ""
+
+#: options/preferences.py
+msgid "Customizable speaker fields"
+msgstr ""
+
+#: options/preferences.py
+msgid "Email address"
+msgstr ""
+
+#: options/preferences.py
+msgid "Phone number"
+msgstr ""
+
+#: options/preferences.py
+msgid "Gender"
+msgstr ""
+
+#: options/preferences.py
+msgid "Public speaker categories"
+msgstr ""
+
+#: options/preferences.py
+msgid "Which fields should adjudicators be allowed to submit"
+msgstr ""
+
+#: options/preferences.py
+msgid "Customizable adjudicator fields"
+msgstr ""
+
+#: options/preferences.py
+msgid "Allow institutions to register for the tournament"
+msgstr ""
+
+#: options/preferences.py
+msgid "Enable institutional registration"
+msgstr ""
+
+#: options/preferences.py
+msgid "Allow institutions to register participants (up to their allocated slots)"
+msgstr ""
+
+#: options/preferences.py
+msgid "Enable institutional participant registration"
+msgstr ""
+
+#: options/preferences.py
+msgid "Whether to require institutions to declare the number of teams and adjudicators it wishes to send with approval required before registering."
+msgstr ""
+
+#: options/preferences.py
+msgid "Use participant slots"
+msgstr ""
+
+#: options/preferences.py
+msgid "Allow teams to register independently to an institution"
+msgstr ""
+
+#: options/preferences.py
+msgid "Enable open team registration"
+msgstr ""
+
+#: options/preferences.py
+msgid "Allow adjudicators to register independently to an institution"
+msgstr ""
+
+#: options/preferences.py
+msgid "Enable open adjudicator registration"
+msgstr ""
+
+#: options/preferences.py
+msgid "If using code names, how should they be generated"
+msgstr ""
+
+#: options/preferences.py
+msgid "Code name standard"
+msgstr ""
+
+#: options/preferences.py
+msgid "Emojis"
+msgstr ""
+
+#: options/preferences.py
+msgid "Last names (e.g. 'Jones & Smith')"
+msgstr ""
+
+#: options/preferences.py
+msgid "Message to be displayed on the institution registration form"
+msgstr ""
+
+#: options/preferences.py
+msgid "Institution register message"
+msgstr ""
+
+#: options/preferences.py
+msgid "Message to be displayed on the adjudicator registration form"
+msgstr ""
+
+#: options/preferences.py
+msgid "Adjudicator register message"
+msgstr ""
+
+#: options/preferences.py
+msgid "Message to be displayed on the team registration form"
+msgstr ""
+
+#: options/preferences.py
+msgid "Team register message"
+msgstr ""
+
 #: options/presets.py
 msgid "Enable Public Information"
 msgstr ""
@@ -1532,6 +1788,10 @@ msgstr ""
 
 #: options/templates/preferences_index.html
 msgid "How and where are motions used"
+msgstr ""
+
+#: options/templates/preferences_index.html
+msgid "How participants can register for the tournament"
 msgstr ""
 
 #: options/templates/preferences_index.html

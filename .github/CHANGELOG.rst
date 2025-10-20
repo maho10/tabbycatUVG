@@ -2,9 +2,35 @@
 Change Log
 ==========
 
-2.10.0
-------
-*Release date: TBD*
+2.11.0 (T)
+----------
+
+
+2.10.0 (Sphynx)
+---------------
+*Release date: 6 July 2025*
+
+- Created section for participant self-registration
+  - Participants may either register themselves for open tournaments, or have to register through an institution
+  - Team slots for institutions can be easily modified
+  - A new group for the registration team has been added
+  - Custom questions can be added in registration forms, viewable in registration tables and admin participant record pages
+- Added page for specifying a tournament schedule
+- Created page for creating adjudicator feedback questions
+- Adapted the minimum cost matching draw algorithm for WSDC tournaments
+  - Added a draw generator where all teams are in a single graph, rather than by bracket
+  - Implemented pullup priorities by draw strength then times pulled up
+  - Restricted pairings based on the number of times in a position
+- Let tournaments specify a number of teams as a reserve break
+- Updated default permission sets for Equity and CAs
+- Email sending has been refactored to avoid failing totally on individual messages, and logging the failures
+- Added a new "forfeit" selector for 2-team ballots creating a win-loss without speaks
+- Implemented a new option to avoid search engine indexing. Thank you to Teymour Aldridge!
+- New API features:
+  - Participant identification through private URL keys
+  - User identification through API tokens
+  - Generating draws with custom rules
+- \+ bug fixes and optimizations!
 
 
 2.9.3

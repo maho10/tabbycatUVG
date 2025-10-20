@@ -257,7 +257,7 @@ urlpatterns = [
 
                 path('/me',
                     views.ParticipantIdentificationView.as_view({'get': 'retrieve'}),
-                    name='api-tournament-detail'),
+                    name='api-participant-me'),
 
                 path('/', include(pref_router.urls)),  # Preferences
             ])),
@@ -275,6 +275,9 @@ urlpatterns = [
             path('',
                 views.UserViewSet.as_view(list_methods),
                 name='api-user-list'),
+            path('/me',
+                views.OwnUserViewSet.as_view({'get': 'retrieve'}),
+                name='api-user-me'),
             path('/<int:pk>',
                 views.UserViewSet.as_view(detail_methods),
                 name='api-user-detail'),

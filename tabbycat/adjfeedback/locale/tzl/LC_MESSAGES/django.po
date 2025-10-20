@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:57\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:53\n"
 "Last-Translator: \n"
 "Language-Team: Talossan\n"
 "Language: tzl_TZL\n"
@@ -22,6 +22,10 @@ msgid "Integer scales must have a minimum and maximum"
 msgstr "crwdns29274:0crwdne29274:0"
 
 #: adjfeedback/admin.py
+msgid "Maximum value must be greater than the minimum"
+msgstr "crwdns53142:0crwdne53142:0"
+
+#: adjfeedback/admin.py
 msgid "target"
 msgstr "crwdns29276:0crwdne29276:0"
 
@@ -34,21 +38,8 @@ msgid "source team"
 msgstr "crwdns29280:0crwdne29280:0"
 
 #: adjfeedback/admin.py
-msgid "Target"
-msgstr "crwdns29282:0crwdne29282:0"
-
-#: adjfeedback/admin.py
 msgid "Source"
 msgstr "crwdns29284:0crwdne29284:0"
-
-#: adjfeedback/admin.py
-msgid "Feedback timestamp and version"
-msgstr "crwdns51566:0crwdne51566:0"
-
-#: adjfeedback/admin.py
-#, python-format
-msgid "%(timestamp)s (version %(version)s)"
-msgstr "crwdns51564:0%(timestamp)scrwdnd51564:0%(version)scrwdne51564:0"
 
 #: adjfeedback/admin.py
 #, python-format
@@ -104,16 +95,6 @@ msgstr "crwdns29302:0crwdne29302:0"
 #: adjfeedback/forms.py
 msgid "trainee"
 msgstr "crwdns29304:0crwdne29304:0"
-
-#. Translators: Please leave this blank, it should be left for the base Django translations.
-#: adjfeedback/forms.py
-msgid "Yes"
-msgstr "crwdns29306:0crwdne29306:0"
-
-#. Translators: Please leave this blank, it should be left for the base Django translations.
-#: adjfeedback/forms.py
-msgid "No"
-msgstr "crwdns29308:0crwdne29308:0"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: adjfeedback/forms.py
@@ -217,114 +198,6 @@ msgid "adjudicator base score histories"
 msgstr "crwdns35556:0crwdne35556:0"
 
 #: adjfeedback/models.py
-msgid "question"
-msgstr "crwdns29352:0crwdne29352:0"
-
-#: adjfeedback/models.py
-msgid "feedback"
-msgstr "crwdns29354:0crwdne29354:0"
-
-#: adjfeedback/models.py
-msgid "answer"
-msgstr "crwdns29356:0crwdne29356:0"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback boolean answer"
-msgstr "crwdns29358:0crwdne29358:0"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback boolean answers"
-msgstr "crwdns29360:0crwdne29360:0"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback integer answer"
-msgstr "crwdns29362:0crwdne29362:0"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback integer answers"
-msgstr "crwdns29364:0crwdne29364:0"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback float answer"
-msgstr "crwdns29366:0crwdne29366:0"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback float answers"
-msgstr "crwdns29368:0crwdne29368:0"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback string answer"
-msgstr "crwdns29370:0crwdne29370:0"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback string answers"
-msgstr "crwdns29372:0crwdne29372:0"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback multiple select answer"
-msgstr "crwdns51702:0crwdne51702:0"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback multiple select answers"
-msgstr "crwdns51704:0crwdne51704:0"
-
-#: adjfeedback/models.py
-msgid "checkbox"
-msgstr "crwdns29374:0crwdne29374:0"
-
-#: adjfeedback/models.py
-msgid "yes/no (dropdown)"
-msgstr "crwdns29376:0crwdne29376:0"
-
-#: adjfeedback/models.py
-msgid "integer (textbox)"
-msgstr "crwdns29378:0crwdne29378:0"
-
-#: adjfeedback/models.py
-msgid "integer scale"
-msgstr "crwdns29380:0crwdne29380:0"
-
-#: adjfeedback/models.py
-msgid "float"
-msgstr "crwdns29382:0crwdne29382:0"
-
-#: adjfeedback/models.py
-msgid "text"
-msgstr "crwdns29384:0crwdne29384:0"
-
-#: adjfeedback/models.py
-msgid "long text"
-msgstr "crwdns29386:0crwdne29386:0"
-
-#: adjfeedback/models.py
-msgid "select one"
-msgstr "crwdns29388:0crwdne29388:0"
-
-#: adjfeedback/models.py
-msgid "select multiple"
-msgstr "crwdns29390:0crwdne29390:0"
-
-#: adjfeedback/models.py
-msgid "tournament"
-msgstr "crwdns29392:0crwdne29392:0"
-
-#: adjfeedback/models.py
-msgid "sequence number"
-msgstr "crwdns29394:0crwdne29394:0"
-
-#: adjfeedback/models.py
-msgid "The question displayed to participants, e.g., \"Did you agree with the decision?\""
-msgstr "crwdns29396:0crwdne29396:0"
-
-#: adjfeedback/models.py
-msgid "name"
-msgstr "crwdns29398:0crwdne29398:0"
-
-#: adjfeedback/models.py
-msgid "A short name for the question, e.g., \"Agree with decision\""
-msgstr "crwdns29400:0crwdne29400:0"
-
-#: adjfeedback/models.py
 msgid "reference"
 msgstr "crwdns29402:0crwdne29402:0"
 
@@ -347,42 +220,6 @@ msgstr "crwdns29410:0crwdne29410:0"
 #: adjfeedback/models.py
 msgid "Teams should be asked this question"
 msgstr "crwdns29412:0crwdne29412:0"
-
-#: adjfeedback/models.py
-msgid "answer type"
-msgstr "crwdns29414:0crwdne29414:0"
-
-#: adjfeedback/models.py
-msgid "required"
-msgstr "crwdns29416:0crwdne29416:0"
-
-#: adjfeedback/models.py
-msgid "Whether participants are required to fill out this field"
-msgstr "crwdns29418:0crwdne29418:0"
-
-#: adjfeedback/models.py
-msgid "minimum value"
-msgstr "crwdns29420:0crwdne29420:0"
-
-#: adjfeedback/models.py
-msgid "Minimum allowed value for numeric fields (ignored for text or boolean fields)"
-msgstr "crwdns29422:0crwdne29422:0"
-
-#: adjfeedback/models.py
-msgid "maximum value"
-msgstr "crwdns29424:0crwdne29424:0"
-
-#: adjfeedback/models.py
-msgid "Maximum allowed value for numeric fields (ignored for text or boolean fields)"
-msgstr "crwdns29426:0crwdne29426:0"
-
-#: adjfeedback/models.py
-msgid "choices"
-msgstr "crwdns29428:0crwdne29428:0"
-
-#: adjfeedback/models.py
-msgid "Permissible choices for select one/multiple fields (ignored for other fields)"
-msgstr "crwdns51914:0crwdne51914:0"
 
 #: adjfeedback/models.py
 msgid "adjudicator feedback question"
@@ -451,6 +288,14 @@ msgstr "crwdns35560:0crwdne35560:0"
 #: adjfeedback/tables.py
 msgid "Assigned base score"
 msgstr "crwdns35562:0crwdne35562:0"
+
+#: adjfeedback/tables.py
+msgid "Feedback average"
+msgstr "crwdns53144:0crwdne53144:0"
+
+#: adjfeedback/tables.py
+msgid "This adjudicator's feedback average"
+msgstr "crwdns53146:0crwdne53146:0"
 
 #: adjfeedback/tables.py
 msgid "The current difference between an adjudicator's base score and current score"
@@ -530,6 +375,10 @@ msgstr "crwdns52478:0crwdne52478:0"
 #: adjfeedback/templates/enter_feedback.html
 msgid "There are some problems with this feedback submission. Please review and correct them."
 msgstr "crwdns29464:0crwdne29464:0"
+
+#: adjfeedback/templates/enter_feedback.html
+msgid "Save Feedback"
+msgstr "crwdns53148:0crwdne53148:0"
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "When submitting this form your IP address will be stored for logging purposes."
@@ -618,8 +467,8 @@ msgstr "crwdns51794:0%(adjudicator)scrwdne51794:0"
 
 #: adjfeedback/templates/feedback_card.html
 #, python-format
-msgid "<span class=\"text-secondary small\">Received as %(as_type)s</span>"
-msgstr "crwdns52153:0%(as_type)scrwdne52153:0"
+msgid "Received as %(as_type)s"
+msgstr "crwdns53150:0%(as_type)scrwdne53150:0"
 
 #: adjfeedback/templates/feedback_card.html
 #, python-format
@@ -972,4 +821,8 @@ msgid "Updated base score for %(count)d adjudicator."
 msgid_plural "Updated base scores for %(count)d adjudicators."
 msgstr[0] "crwdns35576:1%(count)dcrwdne35576:1"
 msgstr[1] "crwdns35576:5%(count)dcrwdne35576:5"
+
+#: adjfeedback/views.py
+msgid "Custom Feedback Questions"
+msgstr "crwdns53152:0crwdne53152:0"
 

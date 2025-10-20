@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:59\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:52\n"
 "Last-Translator: philip_tc\n"
 "Language-Team: Vietnamese\n"
 "Language: vi_VN\n"
@@ -95,7 +95,7 @@ msgstr ""
 
 #: participants/models.py
 msgid "institution"
-msgstr "tổ chức"
+msgstr "đơn vị"
 
 #: participants/models.py
 msgid "institutions"
@@ -103,6 +103,30 @@ msgstr ""
 
 #: participants/models.py
 msgid "tournament"
+msgstr ""
+
+#: participants/models.py
+msgid "Team slots requested"
+msgstr ""
+
+#: participants/models.py
+msgid "Team slots allocated"
+msgstr ""
+
+#: participants/models.py
+msgid "Adjudicator slots requested"
+msgstr ""
+
+#: participants/models.py
+msgid "Adjudicator slots allocated"
+msgstr ""
+
+#: participants/models.py
+msgid "tournament institution"
+msgstr ""
+
+#: participants/models.py
+msgid "tournament institutions"
 msgstr ""
 
 #. Translators: Translate ESL to the acronym for "<target language> as a second/foreign language", not "English"
@@ -125,11 +149,11 @@ msgstr "số thứ tự"
 
 #: participants/models.py
 msgid "The order in which the categories are displayed"
-msgstr ""
+msgstr "Thứ tự hiển thị của các bảng"
 
 #: participants/models.py
 msgid "limit"
-msgstr ""
+msgstr "giới hạn"
 
 #: participants/models.py
 msgid "At most this many speakers will be shown on the public tab for this category, or use 0 for no limit"
@@ -149,6 +173,14 @@ msgstr ""
 
 #: participants/models.py
 msgid "speaker categories"
+msgstr ""
+
+#: participants/models.py
+msgid "last name"
+msgstr ""
+
+#: participants/models.py
+msgid "The last name may be used for team names or code names"
 msgstr ""
 
 #: participants/models.py
@@ -216,6 +248,18 @@ msgid "persons"
 msgstr ""
 
 #: participants/models.py
+msgid "Redacted"
+msgstr "Đã bị xóa"
+
+#: participants/models.py
+msgid "coach"
+msgstr ""
+
+#: participants/models.py
+msgid "coaches"
+msgstr ""
+
+#: participants/models.py
 msgid "full name/suffix"
 msgstr ""
 
@@ -261,7 +305,7 @@ msgstr ""
 
 #: participants/models.py
 msgid "break categories"
-msgstr ""
+msgstr "các bảng xét break"
 
 #: participants/models.py
 msgid "seed"
@@ -313,10 +357,6 @@ msgstr ""
 
 #: participants/models.py
 msgid "Teams must have a full name if they don't use the institutional prefix."
-msgstr ""
-
-#: participants/models.py
-msgid "Teams must have a short name if they don't use the institutional prefix."
 msgstr ""
 
 #: participants/models.py
@@ -387,6 +427,11 @@ msgstr "Điểm nói<br>(theo thứ tự)"
 msgid "Speaks"
 msgstr "Điểm nói"
 
+#: participants/templates/adjudicator_record.html participants/views.py
+#, python-format
+msgid "Record for %(name)s"
+msgstr "Hồ sơ của %(name)s"
+
 #: participants/templates/adjudicator_record.html
 #: participants/templates/team_record.html
 #, python-format
@@ -418,6 +463,11 @@ msgstr ""
 
 #: participants/templates/adjudicator_registration_card.html
 msgid "The institutional affiliations of adjudicators are not public at this tournament."
+msgstr ""
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Custom Questions:"
 msgstr ""
 
 #: participants/templates/adjudicator_registration_card.html
@@ -938,11 +988,6 @@ msgstr ""
 #: participants/views.py
 msgid "Results"
 msgstr "Kết quả"
-
-#: participants/views.py
-#, python-format
-msgid "Record for %(name)s"
-msgstr "Hồ sơ của %(name)s"
 
 #: participants/views.py
 msgid "Previous Rounds"

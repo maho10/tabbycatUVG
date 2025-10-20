@@ -29,9 +29,9 @@ from .forms import BasicEmailForm, TestEmailForm
 from .models import BulkNotification, EmailStatus, SentMessage
 
 if TYPE_CHECKING:
-    from django.http.response import HttpResponseRedirect
     from django.db.models import QuerySet
     from django.http.request import HttpRequest
+    from django.http.response import HttpResponseRedirect
 
 logger = logging.getLogger(__name__)
 
@@ -111,6 +111,7 @@ class EmailStatusView(AdministratorMixin, TournamentMixin, VueTableTemplateView)
             EmailStatus.EventType.DROPPED: 'text-warning',
             EmailStatus.EventType.SPAM: 'text-warning',
             EmailStatus.EventType.DEFERRED: 'text-warning',
+            EmailStatus.EventType.FAILED: 'text-warning',
             EmailStatus.EventType.PROCESSED: 'text-info',
             EmailStatus.EventType.DELIVERED: 'text-info',
             EmailStatus.EventType.OPENED: 'text-success',

@@ -60,6 +60,7 @@ class AdjudicationCore(BaseGroup):
         Permission.EDIT_FEEDBACKQUESTION,
         Permission.VIEW_FEEDBACK_UNSUBMITTED,
         Permission.VIEW_FEEDBACK_OVERVIEW,
+        Permission.VIEW_FEEDBACK,
 
         # Judging and scoring
         Permission.EDIT_BASEJUDGESCORES_IND,
@@ -94,6 +95,8 @@ class AdjudicationCore(BaseGroup):
         Permission.VIEW_INSTITUTIONS,
         Permission.VIEW_DECODED_TEAMS,
         Permission.VIEW_ANONYMOUS,
+        Permission.VIEW_ADMIN_DRAW,
+        Permission.VIEW_DEBATE,
     ]
 
 
@@ -148,4 +151,21 @@ class Registration(BaseGroup):
         Permission.DELETE_QUESTIONS,
         Permission.VIEW_CUSTOM_ANSWERS,
         Permission.VIEW_REGISTRATION,
+    ]
+
+
+class Access(BaseGroup):
+    name = _("Access")
+    permissions = [
+        Permission.EDIT_ROOMCONSTRAINTS,
+        Permission.EDIT_ROOMCATEGORIES,
+        Permission.VIEW_ROOMCATEGORIES,
+        Permission.VIEW_ROOMCONSTRAINTS,
+        Permission.VIEW_ROOMALLOCATIONS,
+        Permission.VIEW_ACTIONLOGENTRIES,
+        Permission.VIEW_TEAMS,
+        Permission.VIEW_ADJUDICATORS,
+        Permission.VIEW_ROOMS,
+        Permission.VIEW_PARTICIPANTS,
+        Permission.VIEW_ROUNDAVAILABILITIES,
     ]

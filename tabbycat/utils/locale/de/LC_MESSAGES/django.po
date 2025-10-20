@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:53\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:50\n"
 "Last-Translator: philip_tc\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -28,7 +28,7 @@ msgstr "Team"
 
 #: utils/admin.py
 msgid "Speaker"
-msgstr "Redner"
+msgstr "Redner:in"
 
 #: utils/admin.py utils/tables.py
 msgid "Tournament"
@@ -319,11 +319,11 @@ msgstr ""
 
 #: utils/tables.py
 msgid "Team iron-personed this round."
-msgstr ""
+msgstr "Das Team hat diese Runde eine Ironman-Rede gehalten."
 
 #: utils/tables.py
 msgid "Team iron-personed last round."
-msgstr ""
+msgstr "Das Team hat letzte Runde eine Ironman-Rede gehalten."
 
 #: utils/tables.py
 #, python-format
@@ -333,6 +333,18 @@ msgstr "Team %(num)d"
 #: utils/tables.py
 msgid "Postpone"
 msgstr "Vertagen"
+
+#: utils/tables.py
+msgid "Event"
+msgstr ""
+
+#: utils/tables.py
+msgid "Start Time"
+msgstr ""
+
+#: utils/tables.py
+msgid "End Time"
+msgstr ""
 
 #: utils/views.py
 msgid "Whoops! You're not meant to type that URL into your browser."

@@ -350,6 +350,7 @@
     <div class="modal-content">
 
       <form id="startTimeForm" method="POST" action="{% roundurl 'draw-start-time-set' %}">
+        {% csrf_token %}
         <div class="modal-body list-group list-group-flush">
 
           {% include "components/form-title.html" with title="Change Start Time" text="" %}

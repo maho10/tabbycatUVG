@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:58\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:53\n"
 "Last-Translator: \n"
 "Language-Team: Talossan\n"
 "Language: tzl_TZL\n"
@@ -38,6 +38,15 @@ msgstr[1] "crwdns29948:5%(count)dcrwdne29948:5"
 #: draw/apps.py draw/views.py
 msgid "Draw"
 msgstr "crwdns29950:0crwdne29950:0"
+
+#: draw/forms.py
+msgid "Full round name"
+msgstr "crwdns53162:0crwdne53162:0"
+
+#: draw/forms.py
+#, python-format
+msgid "You must type '%s' to confirm draw and results deletion."
+msgstr "crwdns53164:0%scrwdne53164:0"
 
 #: draw/generator/__init__.py
 msgid "Too many swaps"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 22:00\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:53\n"
 "Last-Translator: philip_tc\n"
 "Language-Team: Talossan\n"
 "Language: tzl_TZL\n"
@@ -343,6 +343,94 @@ msgstr "crwdns52399:0crwdne52399:0"
 msgid "Break category must be for the same tournament."
 msgstr "crwdns52401:0crwdne52401:0"
 
+#: tournaments/models.py
+msgid "Check-in"
+msgstr "crwdns53588:0crwdne53588:0"
+
+#: tournaments/models.py
+msgid "Briefing"
+msgstr "crwdns53590:0crwdne53590:0"
+
+#: tournaments/models.py
+msgid "Draw/motion announcement"
+msgstr "crwdns53592:0crwdne53592:0"
+
+#: tournaments/models.py
+msgid "Preparation time"
+msgstr "crwdns53594:0crwdne53594:0"
+
+#: tournaments/models.py
+msgid "Debate"
+msgstr "crwdns53596:0crwdne53596:0"
+
+#: tournaments/models.py
+msgid "Adjudication"
+msgstr "crwdns53598:0crwdne53598:0"
+
+#: tournaments/models.py
+msgid "Meal/break"
+msgstr "crwdns53600:0crwdne53600:0"
+
+#: tournaments/models.py
+msgid "Break announcement"
+msgstr "crwdns53602:0crwdne53602:0"
+
+#: tournaments/models.py
+msgid "Award ceremony"
+msgstr "crwdns53604:0crwdne53604:0"
+
+#: tournaments/models.py
+msgid "Other"
+msgstr "crwdns53606:0crwdne53606:0"
+
+#: tournaments/models.py
+msgid "The tournament the event takes place in"
+msgstr "crwdns53608:0crwdne53608:0"
+
+#: tournaments/models.py
+msgid "title"
+msgstr "crwdns53610:0crwdne53610:0"
+
+#: tournaments/models.py
+msgid "e.g. \"Lunch\""
+msgstr "crwdns53612:0crwdne53612:0"
+
+#: tournaments/models.py
+msgid "event type"
+msgstr "crwdns53614:0crwdne53614:0"
+
+#: tournaments/models.py
+msgid "What sort of event this is, use \"Other\" if the type is not available"
+msgstr "crwdns53616:0crwdne53616:0"
+
+#: tournaments/models.py
+msgid "start time"
+msgstr "crwdns53618:0crwdne53618:0"
+
+#: tournaments/models.py
+msgid "The time the event starts"
+msgstr "crwdns53620:0crwdne53620:0"
+
+#: tournaments/models.py
+msgid "end time"
+msgstr "crwdns53622:0crwdne53622:0"
+
+#: tournaments/models.py
+msgid "The time at which the event ends, may be empty"
+msgstr "crwdns53624:0crwdne53624:0"
+
+#: tournaments/models.py
+msgid "If the event belongs to a specific round, which round"
+msgstr "crwdns53626:0crwdne53626:0"
+
+#: tournaments/models.py
+msgid "schedule event"
+msgstr "crwdns53628:0crwdne53628:0"
+
+#: tournaments/models.py
+msgid "schedule events"
+msgstr "crwdns53630:0crwdne53630:0"
+
 #: tournaments/templates/assistant_tournament_index.html
 msgid "Dashboard"
 msgstr "crwdns33220:0crwdne33220:0"
@@ -564,6 +652,11 @@ msgid "The draw for the next round has yet to be released"
 msgstr "crwdns34570:0crwdne34570:0"
 
 #: tournaments/templates/public_tournament_index.html
+#: tournaments/templates/tournament_schedule_edit.html
+msgid "Schedule"
+msgstr "crwdns53632:0crwdne53632:0"
+
+#: tournaments/templates/public_tournament_index.html
 msgid "Check-Ins"
 msgstr "crwdns33332:0crwdne33332:0"
 
@@ -614,8 +707,25 @@ msgid "Enter Feedback"
 msgstr "crwdns33356:0crwdne33356:0"
 
 #: tournaments/templates/public_tournament_index.html
+msgid "Register Institution"
+msgstr "crwdns53634:0crwdne53634:0"
+
+#: tournaments/templates/public_tournament_index.html
+msgid "Register Open Team"
+msgstr "crwdns53636:0crwdne53636:0"
+
+#: tournaments/templates/public_tournament_index.html
+msgid "Register Open Adjudicator"
+msgstr "crwdns53638:0crwdne53638:0"
+
+#: tournaments/templates/public_tournament_index.html
 msgid "Tournament Staff"
 msgstr "crwdns33360:0crwdne33360:0"
+
+#: tournaments/templates/public_tournament_schedule.html
+#, python-format
+msgid "Schedule is in time zone: %(schedule_timezone_label)s"
+msgstr "crwdns53640:0%(schedule_timezone_label)scrwdne53640:0"
 
 #: tournaments/templates/round_complete_check.html
 msgid "Confirm Round Completion"
@@ -833,6 +943,14 @@ msgstr "crwdns33400:0%(tn)scrwdne33400:0"
 #, python-format
 msgid "Public area for <strong>%(tn)s</strong>"
 msgstr "crwdns33402:0%(tn)scrwdne33402:0"
+
+#: tournaments/templates/tournament_schedule_edit.html
+msgid "This page allows you to set the public schedule for the tournament."
+msgstr "crwdns53642:0crwdne53642:0"
+
+#: tournaments/templates/tournament_schedule_edit.html
+msgid "Save Schedule"
+msgstr "crwdns53644:0crwdne53644:0"
 
 #: tournaments/utils.py
 msgid "affirmative"
@@ -1076,4 +1194,8 @@ msgstr "crwdns33386:0crwdne33386:0"
 #: tournaments/views.py
 msgid "Successfully set round weights for tapered scoring."
 msgstr "crwdns52247:0crwdne52247:0"
+
+#: tournaments/views.py
+msgid "Tournament Schedule"
+msgstr "crwdns53646:0crwdne53646:0"
 

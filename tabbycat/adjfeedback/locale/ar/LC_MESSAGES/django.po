@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:51\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:49\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
 "Language: ar_SA\n"
@@ -22,6 +22,10 @@ msgid "Integer scales must have a minimum and maximum"
 msgstr ""
 
 #: adjfeedback/admin.py
+msgid "Maximum value must be greater than the minimum"
+msgstr ""
+
+#: adjfeedback/admin.py
 msgid "target"
 msgstr ""
 
@@ -34,21 +38,8 @@ msgid "source team"
 msgstr ""
 
 #: adjfeedback/admin.py
-msgid "Target"
-msgstr ""
-
-#: adjfeedback/admin.py
 msgid "Source"
 msgstr "الدرجات "
-
-#: adjfeedback/admin.py
-msgid "Feedback timestamp and version"
-msgstr ""
-
-#: adjfeedback/admin.py
-#, python-format
-msgid "%(timestamp)s (version %(version)s)"
-msgstr ""
 
 #: adjfeedback/admin.py
 #, python-format
@@ -124,16 +115,6 @@ msgstr "محكم"
 #: adjfeedback/forms.py
 msgid "trainee"
 msgstr "محكم متدرب "
-
-#. Translators: Please leave this blank, it should be left for the base Django translations.
-#: adjfeedback/forms.py
-msgid "Yes"
-msgstr "نعم "
-
-#. Translators: Please leave this blank, it should be left for the base Django translations.
-#: adjfeedback/forms.py
-msgid "No"
-msgstr "لا"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: adjfeedback/forms.py
@@ -237,114 +218,6 @@ msgid "adjudicator base score histories"
 msgstr ""
 
 #: adjfeedback/models.py
-msgid "question"
-msgstr "سؤال "
-
-#: adjfeedback/models.py
-msgid "feedback"
-msgstr "تغذية راجعة "
-
-#: adjfeedback/models.py
-msgid "answer"
-msgstr "جواب "
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback boolean answer"
-msgstr "اجابة الحكم حول التغذية الراجعة "
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback boolean answers"
-msgstr "اجابة الحكم حول التغذية الراجعة "
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback integer answer"
-msgstr "اجابة الحكم حول التغذية الراجعة "
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback integer answers"
-msgstr "اجابة الحكم حول التغذية الراجعة "
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback float answer"
-msgstr "اجابة الحكم العامة حول التغذية الراجعة"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback float answers"
-msgstr "اجابة الحكم العامة حول التغذية الراجعة "
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback string answer"
-msgstr "اجابة الحكم حول التغذية الراجعة "
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback string answers"
-msgstr "اجابة الحكم حول التغذية الراجعة "
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback multiple select answer"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback multiple select answers"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "checkbox"
-msgstr "صندوق الاختيارات "
-
-#: adjfeedback/models.py
-msgid "yes/no (dropdown)"
-msgstr "نعم/لا"
-
-#: adjfeedback/models.py
-msgid "integer (textbox)"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "integer scale"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "float"
-msgstr "عام "
-
-#: adjfeedback/models.py
-msgid "text"
-msgstr "نص"
-
-#: adjfeedback/models.py
-msgid "long text"
-msgstr "نص طويل "
-
-#: adjfeedback/models.py
-msgid "select one"
-msgstr "اختيار واحد"
-
-#: adjfeedback/models.py
-msgid "select multiple"
-msgstr "اختيار متعدد "
-
-#: adjfeedback/models.py
-msgid "tournament"
-msgstr "دوري"
-
-#: adjfeedback/models.py
-msgid "sequence number"
-msgstr "الرقم المتسلسل "
-
-#: adjfeedback/models.py
-msgid "The question displayed to participants, e.g., \"Did you agree with the decision?\""
-msgstr "السؤال المعروض على المشاركين، على سبيل المثال، \"هل توافق على القرار؟\""
-
-#: adjfeedback/models.py
-msgid "name"
-msgstr "اسم "
-
-#: adjfeedback/models.py
-msgid "A short name for the question, e.g., \"Agree with decision\""
-msgstr "سؤال قصير على سبيل المثال \" موافق على القرار \" "
-
-#: adjfeedback/models.py
 msgid "reference"
 msgstr "مرجع "
 
@@ -367,42 +240,6 @@ msgstr "من الفريق "
 #: adjfeedback/models.py
 msgid "Teams should be asked this question"
 msgstr "سؤال الفريق "
-
-#: adjfeedback/models.py
-msgid "answer type"
-msgstr "نوع الجواب "
-
-#: adjfeedback/models.py
-msgid "required"
-msgstr "مطلوب "
-
-#: adjfeedback/models.py
-msgid "Whether participants are required to fill out this field"
-msgstr ""
-
-#: adjfeedback/models.py
-msgid "minimum value"
-msgstr "أقل قيمة"
-
-#: adjfeedback/models.py
-msgid "Minimum allowed value for numeric fields (ignored for text or boolean fields)"
-msgstr "الحد الأدنى للقيمة المسموح بها للحقول الرقمية"
-
-#: adjfeedback/models.py
-msgid "maximum value"
-msgstr "أعلى قيمة"
-
-#: adjfeedback/models.py
-msgid "Maximum allowed value for numeric fields (ignored for text or boolean fields)"
-msgstr "الحد الأعلى للقيمة المسموح بها للحقول الرقمية"
-
-#: adjfeedback/models.py
-msgid "choices"
-msgstr "أختيارات "
-
-#: adjfeedback/models.py
-msgid "Permissible choices for select one/multiple fields (ignored for other fields)"
-msgstr ""
 
 #: adjfeedback/models.py
 msgid "adjudicator feedback question"
@@ -470,6 +307,14 @@ msgstr ""
 
 #: adjfeedback/tables.py
 msgid "Assigned base score"
+msgstr ""
+
+#: adjfeedback/tables.py
+msgid "Feedback average"
+msgstr ""
+
+#: adjfeedback/tables.py
+msgid "This adjudicator's feedback average"
 msgstr ""
 
 #: adjfeedback/tables.py
@@ -554,6 +399,10 @@ msgstr ""
 #: adjfeedback/templates/enter_feedback.html
 msgid "There are some problems with this feedback submission. Please review and correct them."
 msgstr "هناك بعض المشاكل في التغذية الراجعة يرجى مراجعتهم "
+
+#: adjfeedback/templates/enter_feedback.html
+msgid "Save Feedback"
+msgstr ""
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "When submitting this form your IP address will be stored for logging purposes."
@@ -642,7 +491,7 @@ msgstr ""
 
 #: adjfeedback/templates/feedback_card.html
 #, python-format
-msgid "<span class=\"text-secondary small\">Received as %(as_type)s</span>"
+msgid "Received as %(as_type)s"
 msgstr ""
 
 #: adjfeedback/templates/feedback_card.html
@@ -1036,4 +885,8 @@ msgstr[2] ""
 msgstr[3] ""
 msgstr[4] ""
 msgstr[5] ""
+
+#: adjfeedback/views.py
+msgid "Custom Feedback Questions"
+msgstr ""
 

@@ -18,6 +18,7 @@ from .types import DebateSide
 
 if TYPE_CHECKING:
     from participants.models import Team
+
     from .generator.pairing import BasePairing
 
 logger = logging.getLogger(__name__)
@@ -265,6 +266,8 @@ class PowerPairedDrawManager(BaseDrawManager):
         pullup_debates_penalty = self.round.tournament.pref("pullup_debates_penalty")
         if pullup_debates_penalty > 0:
             extra_metrics.add("pullup_debates")
+        if self.round.tournament.pref("draw_odd_bracket") == 'pullup_lowest_ds_rank_npulls':
+            extra_metrics |= {'npullups', 'draw_strength_rank'}
         extra_metrics -= set(metrics)
 
         generator = TeamStandingsGenerator(metrics, ('rank', 'subrank'), tiebreak="random", extra_metrics=list(extra_metrics))
@@ -279,6 +282,10 @@ class PowerPairedDrawManager(BaseDrawManager):
                 team.pullup_debates = standing.metrics.get("pullup_debates", 0)
             if pullup_metric:
                 setattr(team, pullup_metric, standing.metrics[pullup_metric])
+            if self.round.tournament.pref("draw_odd_bracket") == 'pullup_lowest_ds_rank_npulls':
+                team.npullups = standing.metrics.get('npullups')
+                team.draw_strength_rank = standing.metrics.get('draw_strength_rank')
+
             ranked.append(team)
 
         n_byes = self.n_byes(len(ranked))

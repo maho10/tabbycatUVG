@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,6 +37,15 @@ msgstr[1] ""
 
 #: draw/apps.py draw/views.py
 msgid "Draw"
+msgstr ""
+
+#: draw/forms.py
+msgid "Full round name"
+msgstr ""
+
+#: draw/forms.py
+#, python-format
+msgid "You must type '%s' to confirm draw and results deletion."
 msgstr ""
 
 #: draw/generator/__init__.py

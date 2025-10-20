@@ -22,6 +22,15 @@
   <meta property="og:description" content="{{ meta_description }}" />
   <meta property="og:image" content="{% static 'logo-social.png' %}" />
 
+  {% block noindex %}
+    {% if tournament %}
+            {% if pref.search_engine_indexing != "all" %}
+                <meta name="robots" content="noindex">
+            {% endif %}
+    {% endif %}
+  {% endblock %}
+
+
   <link rel="preload" href="{% static 'fonts/Inter-Regular.woff2' %}" as="font" type="font/woff2">
   <link rel="icon" type="image/png" href="{% static 'logo-32x32.png' %}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{% static 'logo-16x16.png' %}" sizes="16x16" />

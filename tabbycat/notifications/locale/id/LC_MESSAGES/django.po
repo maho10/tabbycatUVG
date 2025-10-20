@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-28 12:44-0400\n"
-"PO-Revision-Date: 2023-02-05 00:59\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:47\n"
 "Last-Translator: philip_tc\n"
 "Language-Team: Indonesian\n"
 "Language: id_ID\n"
@@ -197,6 +197,10 @@ msgid "Resubscribed to group"
 msgstr "Dilanggankan kembali ke grup"
 
 #: notifications/models.py
+msgid "Failed to send"
+msgstr ""
+
+#: notifications/models.py
 msgid "email message"
 msgstr "pesan email"
 
@@ -317,7 +321,7 @@ msgstr ", "
 #: notifications/views.py
 #, python-format
 msgid "The email (SMTP) server returned an error sending the test email: [SMTP code %(code)d] %(error)s"
-msgstr "Server surel (SMTP) mengalami sebuah kesalahan dalam mengirimkan surel ujicoba: [SMTP code %(code)d%] %(error)s"
+msgstr "Server surel (SMTP) mengalami sebuah kesalahan dalam mengirimkan surel ujicoba: [SMTP code %(code)d] %(error)s"
 
 #: notifications/views.py
 msgid "Hint: If the error is about sender identity verification in SendGrid, and you've already completed the steps in SendGrid, it may be that you need to update the DEFAULT_FROM_EMAIL config var in Heroku to match your verified sender identity."

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:58\n"
+"POT-Creation-Date: 2025-07-06 09:40+1000\n"
+"PO-Revision-Date: 2025-07-05 23:53\n"
 "Last-Translator: \n"
 "Language-Team: Talossan\n"
 "Language: tzl_TZL\n"
@@ -103,7 +103,7 @@ msgstr "crwdns30600:0crwdne30600:0"
 msgid "check-in time"
 msgstr "crwdns30602:0crwdne30602:0"
 
-#: checkins/models.py users/models.py
+#: checkins/models.py registration/models.py users/models.py
 msgid "tournament"
 msgstr "crwdns30604:0crwdne30604:0"
 
@@ -188,11 +188,13 @@ msgstr "crwdns51262:0crwdne51262:0"
 msgid "Make Identifiers"
 msgstr "crwdns30642:0crwdne30642:0"
 
-#: checkins/views.py templates/nav/admin_nav.html
+#: checkins/views.py registration/templates/answer_tables/teams.html
+#: templates/nav/admin_nav.html
 msgid "Speakers"
 msgstr "crwdns30644:0crwdne30644:0"
 
-#: checkins/views.py templates/nav/public_nav.html
+#: checkins/views.py registration/views.py templates/nav/admin_nav.html
+#: templates/nav/public_nav.html
 msgid "Adjudicators"
 msgstr "crwdns30646:0crwdne30646:0"
 
@@ -229,9 +231,458 @@ msgstr "crwdns30660:0crwdne30660:0"
 msgid "You are now checked in."
 msgstr "crwdns30662:0crwdne30662:0"
 
+#. Translators: Please leave this blank, it should be left for the base Django translations.
+#: registration/form_utils.py
+msgid "Yes"
+msgstr "crwdns53168:0crwdne53168:0"
+
+#. Translators: Please leave this blank, it should be left for the base Django translations.
+#: registration/form_utils.py
+msgid "No"
+msgstr "crwdns53170:0crwdne53170:0"
+
+#. Translators: Please leave this blank, it should be left for the base Django translations.
+#: registration/form_utils.py
+msgid "This field is required."
+msgstr "crwdns53172:0crwdne53172:0"
+
+#: registration/forms.py
+msgid "Coach name"
+msgstr "crwdns53174:0crwdne53174:0"
+
+#: registration/forms.py
+msgid "Unseeded"
+msgstr "crwdns53176:0crwdne53176:0"
+
+#: registration/forms.py
+msgid "Free seed"
+msgstr "crwdns53178:0crwdne53178:0"
+
+#: registration/forms.py
+msgid "Half seed"
+msgstr "crwdns53180:0crwdne53180:0"
+
+#: registration/forms.py
+msgid "Full seed"
+msgstr "crwdns53182:0crwdne53182:0"
+
+#: registration/forms.py
+msgid "Full name for tab"
+msgstr "crwdns53184:0crwdne53184:0"
+
+#: registration/models.py
+msgid "content type"
+msgstr "crwdns53186:0crwdne53186:0"
+
+#: registration/models.py
+msgid "object id"
+msgstr "crwdns53188:0crwdne53188:0"
+
+#: registration/models.py
+msgid "question"
+msgstr "crwdns53190:0crwdne53190:0"
+
+#: registration/models.py
+msgid "answer"
+msgstr "crwdns53192:0crwdne53192:0"
+
+#: registration/models.py
+msgid "answers"
+msgstr "crwdns53194:0crwdne53194:0"
+
+#: registration/models.py
+msgid "checkbox"
+msgstr "crwdns53196:0crwdne53196:0"
+
+#: registration/models.py
+msgid "yes/no (dropdown)"
+msgstr "crwdns53198:0crwdne53198:0"
+
+#: registration/models.py
+msgid "integer (textbox)"
+msgstr "crwdns53200:0crwdne53200:0"
+
+#: registration/models.py
+msgid "integer scale"
+msgstr "crwdns53202:0crwdne53202:0"
+
+#: registration/models.py
+msgid "float"
+msgstr "crwdns53204:0crwdne53204:0"
+
+#: registration/models.py
+msgid "text"
+msgstr "crwdns53206:0crwdne53206:0"
+
+#: registration/models.py
+msgid "long text"
+msgstr "crwdns53208:0crwdne53208:0"
+
+#: registration/models.py
+msgid "select one"
+msgstr "crwdns53210:0crwdne53210:0"
+
+#: registration/models.py
+msgid "select multiple"
+msgstr "crwdns53212:0crwdne53212:0"
+
+#: registration/models.py
+msgid "date + time"
+msgstr "crwdns53214:0crwdne53214:0"
+
+#: registration/models.py
+msgid "for content type"
+msgstr "crwdns53216:0crwdne53216:0"
+
+#: registration/models.py
+msgid "sequence number"
+msgstr "crwdns53218:0crwdne53218:0"
+
+#: registration/models.py
+msgid "The question displayed to participants, e.g., \"Did you agree with the decision?\""
+msgstr "crwdns53220:0crwdne53220:0"
+
+#: registration/models.py
+msgid "help text"
+msgstr "crwdns53222:0crwdne53222:0"
+
+#: registration/models.py
+msgid "Additional context for the question"
+msgstr "crwdns53224:0crwdne53224:0"
+
+#: registration/models.py users/models.py
+msgid "name"
+msgstr "crwdns52514:0crwdne52514:0"
+
+#: registration/models.py
+msgid "A short name for the question, e.g., \"Agree with decision\""
+msgstr "crwdns53226:0crwdne53226:0"
+
+#: registration/models.py
+msgid "answer type"
+msgstr "crwdns53228:0crwdne53228:0"
+
+#: registration/models.py
+msgid "required"
+msgstr "crwdns53230:0crwdne53230:0"
+
+#: registration/models.py
+msgid "Whether participants are required to fill out this field"
+msgstr "crwdns53232:0crwdne53232:0"
+
+#: registration/models.py
+msgid "minimum value"
+msgstr "crwdns53234:0crwdne53234:0"
+
+#: registration/models.py
+msgid "Minimum allowed value for numeric fields (ignored for text or boolean fields)"
+msgstr "crwdns53236:0crwdne53236:0"
+
+#: registration/models.py
+msgid "maximum value"
+msgstr "crwdns53238:0crwdne53238:0"
+
+#: registration/models.py
+msgid "Maximum allowed value for numeric fields (ignored for text or boolean fields)"
+msgstr "crwdns53240:0crwdne53240:0"
+
+#: registration/models.py
+msgid "choices"
+msgstr "crwdns53242:0crwdne53242:0"
+
+#: registration/models.py
+msgid "Permissible choices for select one/multiple fields (ignored for other fields)"
+msgstr "crwdns53244:0crwdne53244:0"
+
+#: registration/models.py
+msgid "questions"
+msgstr "crwdns53246:0crwdne53246:0"
+
+#: registration/models.py
+msgid "institution"
+msgstr "crwdns53248:0crwdne53248:0"
+
+#: registration/models.py
+msgid "team"
+msgstr "crwdns53250:0crwdne53250:0"
+
+#: registration/models.py
+msgid "URL key"
+msgstr "crwdns53252:0crwdne53252:0"
+
+#: registration/models.py
+msgid "created on"
+msgstr "crwdns53254:0crwdne53254:0"
+
+#: registration/models.py
+msgid "invitation"
+msgstr "crwdns53256:0crwdne53256:0"
+
+#: registration/models.py
+msgid "invitations"
+msgstr "crwdns53258:0crwdne53258:0"
+
+#: registration/templates/adjudicator_registration_form.html
+msgctxt "button"
+msgid "Register as Adjudicator"
+msgstr "crwdns53260:0crwdne53260:0"
+
+#: registration/templates/adjudicator_registration_form.html
+#: registration/templates/wizard_registration_form.html
+#: templates/registration/password_change_form.html
+#: templates/registration/password_reset_confirm.html
+msgid "Cancel and go back to the site home page"
+msgstr "crwdns30908:0crwdne30908:0"
+
+#: registration/templates/answer_tables/adjudicators.html
+msgid "Questions"
+msgstr "crwdns53262:0crwdne53262:0"
+
+#: registration/templates/answer_tables/institutions.html
+#: registration/templates/answer_tables/teams.html
+msgid "Questions for"
+msgstr "crwdns53264:0crwdne53264:0"
+
+#: registration/templates/answer_tables/institutions.html
+#: templates/nav/admin_nav.html templates/nav/assistant_nav.html
+#: templates/nav/public_nav.html
+msgid "Institutions"
+msgstr "crwdns30834:0crwdne30834:0"
+
+#: registration/templates/answer_tables/institutions.html
+msgid "Coaches"
+msgstr "crwdns53266:0crwdne53266:0"
+
+#: registration/templates/answer_tables/institutions.html
+#, python-format
+msgid "Teams Requested: <strong>%(num)s</strong>"
+msgstr "crwdns53268:0%(num)scrwdne53268:0"
+
+#: registration/templates/answer_tables/institutions.html
+#, python-format
+msgid "Teams Allocated: <strong>%(num)s</strong>"
+msgstr "crwdns53270:0%(num)scrwdne53270:0"
+
+#: registration/templates/answer_tables/institutions.html
+#, python-format
+msgid "Teams Registered: <strong>%(num)s</strong>"
+msgstr "crwdns53272:0%(num)scrwdne53272:0"
+
+#: registration/templates/answer_tables/institutions.html
+#, python-format
+msgid "Adjudicators Requested: <strong>%(num)s</strong>"
+msgstr "crwdns53274:0%(num)scrwdne53274:0"
+
+#: registration/templates/answer_tables/institutions.html
+#, python-format
+msgid "Adjudicators Allocated: <strong>%(num)s</strong>"
+msgstr "crwdns53276:0%(num)scrwdne53276:0"
+
+#: registration/templates/answer_tables/institutions.html
+#, python-format
+msgid "Adjudicators Registered: <strong>%(num)s</strong>"
+msgstr "crwdns53278:0%(num)scrwdne53278:0"
+
+#: registration/templates/answer_tables/institutions.html
+msgid "Save allocations"
+msgstr "crwdns53280:0crwdne53280:0"
+
+#: registration/templates/answer_tables/teams.html registration/views.py
+#: templates/nav/admin_nav.html
+msgid "Teams"
+msgstr "crwdns30808:0crwdne30808:0"
+
+#: registration/templates/coach_private_url.html
+msgid "Private URL"
+msgstr "crwdns53282:0crwdne53282:0"
+
+#: registration/templates/coach_private_url.html
+#, python-format
+msgid "for %(name)s (%(institution)s)"
+msgstr "crwdns53284:0%(name)scrwdnd53284:0%(institution)scrwdne53284:0"
+
+#: registration/templates/coach_private_url.html
+#, python-format
+msgid "The URL of this page is personalised to you, %(name)s. <strong>Do not share it with anyone;</strong> anyone who knows this URL can manage participants for %(institution)s. You may bookmark this page and return here after each debate for the available actions."
+msgstr "crwdns53286:0%(name)scrwdnd53286:0%(institution)scrwdne53286:0"
+
+#: registration/templates/coach_private_url.html registration/views.py
+msgid "Register Adjudicator"
+msgstr "crwdns53288:0crwdne53288:0"
+
+#: registration/templates/coach_private_url.html
+msgid "Participant registration is not yet open"
+msgstr "crwdns53290:0crwdne53290:0"
+
+#: registration/templates/coach_private_url.html
+msgid "or distribute this link to allow members to register themselves as adjudicators:"
+msgstr "crwdns53292:0crwdne53292:0"
+
+#: registration/templates/coach_private_url.html registration/views.py
+msgid "Register Team"
+msgstr "crwdns53294:0crwdne53294:0"
+
+#: registration/templates/coach_private_url.html
+msgid "or distribute this link to allow members to register their teams:"
+msgstr "crwdns53296:0crwdne53296:0"
+
+#: registration/templates/coach_private_url.html
+msgid "View invoice"
+msgstr "crwdns53298:0crwdne53298:0"
+
+#: registration/templates/questions_edit.html
+msgid "These questions appear as extra fields for participants to answer, in feedback or registration forms."
+msgstr "crwdns53300:0crwdne53300:0"
+
+#: registration/templates/questions_edit.html
+#, python-format
+msgid "If you want to delete questions (and their associated answers), use the <a href=\"%(edit_db_url)s\" class=\"alert-link\">Edit Database</a> area."
+msgstr "crwdns53302:0%(edit_db_url)scrwdne53302:0"
+
+#: registration/templates/questions_edit.html
+msgid "Save Questions"
+msgstr "crwdns53304:0crwdne53304:0"
+
+#: registration/templates/team_wizard_speakers.html
+msgid "You may register speakers for the team, but if not all speakers are included, a link will be generated to let speakers register themselves to the team after submission which you can then distribute."
+msgstr "crwdns53306:0crwdne53306:0"
+
+#: registration/templates/wizard_registration_form.html
+msgctxt "button"
+msgid "Continue"
+msgstr "crwdns53308:0crwdne53308:0"
+
+#: registration/templates/wizard_registration_form.html
+msgctxt "button"
+msgid "Register"
+msgstr "crwdns53310:0crwdne53310:0"
+
+#: registration/views.py
+msgid "Register Institution"
+msgstr "crwdns53312:0crwdne53312:0"
+
+#: registration/views.py
+#, python-format
+msgid "Your institution %s has been registered!"
+msgstr "crwdns53314:0%scrwdne53314:0"
+
+#: registration/views.py
+msgid "Register Speaker"
+msgid_plural "Register Speakers"
+msgstr[0] "crwdns53316:1crwdne53316:1"
+msgstr[1] "crwdns53316:5crwdne53316:5"
+
+#: registration/views.py
+#, python-format
+msgid "from %s"
+msgstr "crwdns53318:0%scrwdne53318:0"
+
+#: registration/views.py
+#, python-format
+msgid "for %s"
+msgstr "crwdns53320:0%scrwdne53320:0"
+
+#: registration/views.py
+#, python-format
+msgid "Your team only has %(num)d speaker! Invite the other speakers to register using this link: <a href='%(link)s'>%(link)s</a>"
+msgid_plural "Your team only has %(num)d speakers! Invite the other speakers to register using this link: <a href='%(link)s'>%(link)s</a>"
+msgstr[0] "crwdns53322:1%(num)dcrwdnd53322:1%(link)scrwdnd53322:1%(link)scrwdne53322:1"
+msgstr[1] "crwdns53322:5%(num)dcrwdnd53322:5%(link)scrwdnd53322:5%(link)scrwdne53322:5"
+
+#: registration/views.py
+#, python-format
+msgid "Your team %s has been registered!"
+msgstr "crwdns53324:0%scrwdne53324:0"
+
+#: registration/views.py
+msgid "You have been registered as an adjudicator!"
+msgstr "crwdns53326:0crwdne53326:0"
+
+#: registration/views.py
+msgid "You have been registered as a speaker!"
+msgstr "crwdns53328:0crwdne53328:0"
+
+#: registration/views.py
+msgid "Institutional Registration"
+msgstr "crwdns53330:0crwdne53330:0"
+
+#: registration/views.py
+msgid "Responses"
+msgstr "crwdns53332:0crwdne53332:0"
+
+#: registration/views.py
+msgid "Name"
+msgstr "crwdns53334:0crwdne53334:0"
+
+#: registration/views.py
+msgid "Coach"
+msgstr "crwdns53336:0crwdne53336:0"
+
+#: registration/views.py
+msgid "Teams Requested"
+msgstr "crwdns53338:0crwdne53338:0"
+
+#: registration/views.py
+msgid "Teams Allocated"
+msgstr "crwdns53340:0crwdne53340:0"
+
+#: registration/views.py
+msgid "Teams Registered"
+msgstr "crwdns53342:0crwdne53342:0"
+
+#: registration/views.py
+msgid "Adjudicators Requested"
+msgstr "crwdns53344:0crwdne53344:0"
+
+#: registration/views.py
+msgid "Adjudicators Allocated"
+msgstr "crwdns53346:0crwdne53346:0"
+
+#: registration/views.py
+msgid "Adjudicators Registered"
+msgstr "crwdns53348:0crwdne53348:0"
+
+#: registration/views.py
+msgid "Successfully modified institution allocations"
+msgstr "crwdns53350:0crwdne53350:0"
+
+#: registration/views.py
+msgid "Team Registration"
+msgstr "crwdns53352:0crwdne53352:0"
+
+#: registration/views.py
+#, python-format
+msgid "Speaker %d"
+msgstr "crwdns53354:0%dcrwdne53354:0"
+
+#: registration/views.py
+msgid "Email"
+msgstr "crwdns53356:0crwdne53356:0"
+
+#: registration/views.py
+msgid "Adjudicator Registration"
+msgstr "crwdns53358:0crwdne53358:0"
+
+#: registration/views.py
+msgid "Custom Questions"
+msgstr "crwdns53360:0crwdne53360:0"
+
+#: registration/views.py
+#, python-format
+msgid "Questions for %(model)s were successfully saved."
+msgstr "crwdns53362:0%(model)scrwdne53362:0"
+
+#: registration/views.py
+msgid "No changes were made to the questions."
+msgstr "crwdns53364:0crwdne53364:0"
+
 #: settings/core.py
 msgid "Arabic"
 msgstr "crwdns30684:0crwdne30684:0"
+
+#: settings/core.py
+msgid "Asturian"
+msgstr "crwdns53366:0crwdne53366:0"
 
 #: settings/core.py
 msgid "Bengali"
@@ -532,6 +983,10 @@ msgstr "crwdns30776:0crwdne30776:0"
 msgid "Private URLs"
 msgstr "crwdns30778:0crwdne30778:0"
 
+#: templates/nav/admin_nav.html templates/nav/public_nav.html
+msgid "Schedule"
+msgstr "crwdns53368:0crwdne53368:0"
+
 #: templates/nav/admin_nav.html
 msgid "Emails"
 msgstr "crwdns34126:0crwdne34126:0"
@@ -547,6 +1002,10 @@ msgstr "crwdns51946:0crwdne51946:0"
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Sides"
 msgstr "crwdns30782:0crwdne30782:0"
+
+#: templates/nav/admin_nav.html users/groups.py
+msgid "Registration"
+msgstr "crwdns53370:0crwdne53370:0"
 
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
 msgid "People's Status"
@@ -585,6 +1044,10 @@ msgid "Unsubmitted"
 msgstr "crwdns30798:0crwdne30798:0"
 
 #: templates/nav/admin_nav.html
+msgid "Feedback Questions"
+msgstr "crwdns53372:0crwdne53372:0"
+
+#: templates/nav/admin_nav.html
 msgid "Add Feedback"
 msgstr "crwdns30800:0crwdne30800:0"
 
@@ -599,10 +1062,6 @@ msgstr "crwdns30804:0crwdne30804:0"
 #: templates/nav/admin_nav.html
 msgid "All Teams"
 msgstr "crwdns30806:0crwdne30806:0"
-
-#: templates/nav/admin_nav.html
-msgid "Teams"
-msgstr "crwdns30808:0crwdne30808:0"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
@@ -666,10 +1125,6 @@ msgstr "crwdns30830:0crwdne30830:0"
 #: templates/nav/assistant_nav.html
 msgid "Participants List"
 msgstr "crwdns30832:0crwdne30832:0"
-
-#: templates/nav/assistant_nav.html templates/nav/public_nav.html
-msgid "Institutions"
-msgstr "crwdns30834:0crwdne30834:0"
 
 #: templates/nav/assistant_nav.html
 msgid "Code Names"
@@ -847,11 +1302,6 @@ msgctxt "button"
 msgid "Change my password"
 msgstr "crwdns30906:0crwdne30906:0"
 
-#: templates/registration/password_change_form.html
-#: templates/registration/password_reset_confirm.html
-msgid "Cancel and go back to the site home page"
-msgstr "crwdns30908:0crwdne30908:0"
-
 #: templates/registration/password_reset_complete.html
 msgctxt "page title"
 msgid "Password reset complete"
@@ -902,6 +1352,11 @@ msgstr "crwdns51584:0crwdne51584:0"
 #, python-format
 msgid "Hi, %(user)s!"
 msgstr "crwdns51296:0%(user)scrwdne51296:0"
+
+#: templates/registration/password_reset_email.html
+#, python-format
+msgid "Your username is: %(user)s"
+msgstr "crwdns53374:0%(user)scrwdne53374:0"
 
 #: templates/registration/password_reset_email.html
 #, python-format
@@ -1003,10 +1458,6 @@ msgstr "crwdns52510:0crwdne52510:0"
 #: users/models.py
 msgid "user permissions"
 msgstr "crwdns52512:0crwdne52512:0"
-
-#: users/models.py
-msgid "name"
-msgstr "crwdns52514:0crwdne52514:0"
 
 #: users/models.py
 msgid "permissions"
@@ -1185,6 +1636,10 @@ msgid "generate debates (draw)"
 msgstr "crwdns52602:0crwdne52602:0"
 
 #: users/permissions.py
+msgid "delete debates (draw)"
+msgstr "crwdns53376:0crwdne53376:0"
+
+#: users/permissions.py
 msgid "edit debate teams (pairings)"
 msgstr "crwdns52604:0crwdne52604:0"
 
@@ -1273,24 +1728,12 @@ msgid "add debate start time"
 msgstr "crwdns52646:0crwdne52646:0"
 
 #: users/permissions.py
-msgid "view draws"
-msgstr "crwdns52648:0crwdne52648:0"
-
-#: users/permissions.py
 msgid "view draws (for the briefing room)"
 msgstr "crwdns52650:0crwdne52650:0"
 
 #: users/permissions.py
 msgid "display motion (for the briefing room)"
 msgstr "crwdns52652:0crwdne52652:0"
-
-#: users/permissions.py
-msgid "view tournament configuration"
-msgstr "crwdns52654:0crwdne52654:0"
-
-#: users/permissions.py
-msgid "edit tournament configuration"
-msgstr "crwdns52656:0crwdne52656:0"
 
 #: users/permissions.py
 msgid "view existing preformed panels"
@@ -1327,10 +1770,6 @@ msgstr "crwdns52672:0crwdne52672:0"
 #: users/permissions.py
 msgid "view overview of judge feedback"
 msgstr "crwdns52674:0crwdne52674:0"
-
-#: users/permissions.py
-msgid "bulk update judge scores"
-msgstr "crwdns52676:0crwdne52676:0"
 
 #: users/permissions.py
 msgid "edit base scores of judges"
@@ -1417,16 +1856,8 @@ msgid "view private urls"
 msgstr "crwdns52718:0crwdne52718:0"
 
 #: users/permissions.py
-msgid "view private urls email list"
-msgstr "crwdns52720:0crwdne52720:0"
-
-#: users/permissions.py
 msgid "generate private URLs"
 msgstr "crwdns52722:0crwdne52722:0"
-
-#: users/permissions.py
-msgid "send private URLs"
-msgstr "crwdns52724:0crwdne52724:0"
 
 #: users/permissions.py
 msgid "view checkins"
@@ -1453,6 +1884,14 @@ msgid "create rounds"
 msgstr "crwdns52736:0crwdne52736:0"
 
 #: users/permissions.py
+msgid "confirm rounds"
+msgstr "crwdns53378:0crwdne53378:0"
+
+#: users/permissions.py
+msgid "silence rounds"
+msgstr "crwdns53380:0crwdne53380:0"
+
+#: users/permissions.py
 msgid "view email statuses"
 msgstr "crwdns52738:0crwdne52738:0"
 
@@ -1471,6 +1910,30 @@ msgstr "crwdns52744:0crwdne52744:0"
 #: users/permissions.py
 msgid "edit settings"
 msgstr "crwdns52746:0crwdne52746:0"
+
+#: users/permissions.py
+msgid "edit general questions"
+msgstr "crwdns53382:0crwdne53382:0"
+
+#: users/permissions.py
+msgid "delete general questions"
+msgstr "crwdns53384:0crwdne53384:0"
+
+#: users/permissions.py
+msgid "view answers to general questions"
+msgstr "crwdns53386:0crwdne53386:0"
+
+#: users/permissions.py
+msgid "edit events"
+msgstr "crwdns53388:0crwdne53388:0"
+
+#: users/permissions.py
+msgid "view events"
+msgstr "crwdns53390:0crwdne53390:0"
+
+#: users/permissions.py
+msgid "view registration responses"
+msgstr "crwdns53392:0crwdne53392:0"
 
 #: users/templates/account_invitation_email.html
 msgid "Hello!"
@@ -1507,6 +1970,10 @@ msgctxt "button"
 msgid "Invite User"
 msgstr "crwdns52760:0crwdne52760:0"
 
+#: users/templates/invite_user.html
+msgid "Note: if you submit this multiple times, multiple invite emails will be sent."
+msgstr "crwdns53394:0crwdne53394:0"
+
 #: users/templates/signup.html
 msgctxt "page title"
 msgid "Create a new Account"
@@ -1528,6 +1995,10 @@ msgstr "crwdns52073:0%scrwdne52073:0"
 #: users/views.py
 msgid "Invite User"
 msgstr "crwdns52764:0crwdne52764:0"
+
+#: users/views.py
+msgid "Successfully invited user to create an account for the tournament."
+msgstr "crwdns53396:0crwdne53396:0"
 
 #: users/views.py
 msgid "Accept Invitation"

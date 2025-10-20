@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 07:48+1000\n"
-"PO-Revision-Date: 2024-06-23 21:54\n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:51\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -22,6 +22,10 @@ msgid "Integer scales must have a minimum and maximum"
 msgstr "Tamsayı ölçeklerinin minimum ve maksimumu olmalıdır"
 
 #: adjfeedback/admin.py
+msgid "Maximum value must be greater than the minimum"
+msgstr ""
+
+#: adjfeedback/admin.py
 msgid "target"
 msgstr "hedef"
 
@@ -34,21 +38,8 @@ msgid "source team"
 msgstr "kaynak ekip"
 
 #: adjfeedback/admin.py
-msgid "Target"
-msgstr "Hedef"
-
-#: adjfeedback/admin.py
 msgid "Source"
 msgstr "Kaynak"
-
-#: adjfeedback/admin.py
-msgid "Feedback timestamp and version"
-msgstr "Geri bildirim zaman damgası ve sürümü"
-
-#: adjfeedback/admin.py
-#, python-format
-msgid "%(timestamp)s (version %(version)s)"
-msgstr "%(timestamp)s (version %(version)s)"
 
 #: adjfeedback/admin.py
 #, python-format
@@ -107,16 +98,6 @@ msgstr "acemi"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: adjfeedback/forms.py
-msgid "Yes"
-msgstr ""
-
-#. Translators: Please leave this blank, it should be left for the base Django translations.
-#: adjfeedback/forms.py
-msgid "No"
-msgstr ""
-
-#. Translators: Please leave this blank, it should be left for the base Django translations.
-#: adjfeedback/forms.py
 msgid "This field is required."
 msgstr ""
 
@@ -166,7 +147,7 @@ msgstr "%(name)s (panelist başkanın verdiği rolle karar sebebi açıkladı)"
 #: adjfeedback/forms.py
 #, python-format
 msgid "This line (for %(adjudicator)s) didn't have a score"
-msgstr "Bu satırın (% (adjudicator)s için) bir puanı yoktu"
+msgstr "Bu satırın (%(adjudicator)s için) bir puanı yoktu"
 
 #: adjfeedback/forms.py
 #, python-format
@@ -217,114 +198,6 @@ msgid "adjudicator base score histories"
 msgstr "hakem taban puan geçmişleri"
 
 #: adjfeedback/models.py
-msgid "question"
-msgstr "soru"
-
-#: adjfeedback/models.py
-msgid "feedback"
-msgstr "geri bildirim"
-
-#: adjfeedback/models.py
-msgid "answer"
-msgstr "cevap"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback boolean answer"
-msgstr "jüri geri bildirimi mantıksal cevabı"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback boolean answers"
-msgstr "jüri geri bildirimi mantıksal cevapları"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback integer answer"
-msgstr "jüri geri bildirimi tamsayı cevabı"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback integer answers"
-msgstr "jüri geri bildirimi tamsayı cevapları"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback float answer"
-msgstr "jüri geri bildirimi float cevabı"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback float answers"
-msgstr "jüri geri bildirimi float cevapları"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback string answer"
-msgstr "jüri geri bildirimi dizi cevabı"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback string answers"
-msgstr "jüri geri bildirimi dizi cevapları"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback multiple select answer"
-msgstr "jüri geri bildirimi çoklu seçim cevabı"
-
-#: adjfeedback/models.py
-msgid "adjudicator feedback multiple select answers"
-msgstr "jüri geri bildirimi çoklu seçim cevapları"
-
-#: adjfeedback/models.py
-msgid "checkbox"
-msgstr "onay kutusu"
-
-#: adjfeedback/models.py
-msgid "yes/no (dropdown)"
-msgstr "evet/hayır (açılır menü)"
-
-#: adjfeedback/models.py
-msgid "integer (textbox)"
-msgstr "tamsayı (metin kutusu)"
-
-#: adjfeedback/models.py
-msgid "integer scale"
-msgstr "tamsayı ölçeği"
-
-#: adjfeedback/models.py
-msgid "float"
-msgstr "float"
-
-#: adjfeedback/models.py
-msgid "text"
-msgstr "metin"
-
-#: adjfeedback/models.py
-msgid "long text"
-msgstr "uzun metin"
-
-#: adjfeedback/models.py
-msgid "select one"
-msgstr "birini seçin"
-
-#: adjfeedback/models.py
-msgid "select multiple"
-msgstr "birden fazla seç"
-
-#: adjfeedback/models.py
-msgid "tournament"
-msgstr "turnuva"
-
-#: adjfeedback/models.py
-msgid "sequence number"
-msgstr "sıra numarası"
-
-#: adjfeedback/models.py
-msgid "The question displayed to participants, e.g., \"Did you agree with the decision?\""
-msgstr "Katılımcılara gösterilen soru, örneğin, \"Karara katıldınız mı?\""
-
-#: adjfeedback/models.py
-msgid "name"
-msgstr "isim"
-
-#: adjfeedback/models.py
-msgid "A short name for the question, e.g., \"Agree with decision\""
-msgstr "Sorunun kısa adı, örneğin, \"Karara katılıyorum\""
-
-#: adjfeedback/models.py
 msgid "reference"
 msgstr "referans"
 
@@ -347,42 +220,6 @@ msgstr "takımdan"
 #: adjfeedback/models.py
 msgid "Teams should be asked this question"
 msgstr "Bu soru takımlara sorulmalıdır"
-
-#: adjfeedback/models.py
-msgid "answer type"
-msgstr "yanıt türü"
-
-#: adjfeedback/models.py
-msgid "required"
-msgstr "gerekli"
-
-#: adjfeedback/models.py
-msgid "Whether participants are required to fill out this field"
-msgstr "Katılımcıların bu alanı doldurmaları gerekip gerekmediği"
-
-#: adjfeedback/models.py
-msgid "minimum value"
-msgstr "minimum değer"
-
-#: adjfeedback/models.py
-msgid "Minimum allowed value for numeric fields (ignored for text or boolean fields)"
-msgstr "Sayısal alanlar için izin verilen minimum değer (metin veya mantıksal alanlar için yoksayılır)"
-
-#: adjfeedback/models.py
-msgid "maximum value"
-msgstr "maksimum değer"
-
-#: adjfeedback/models.py
-msgid "Maximum allowed value for numeric fields (ignored for text or boolean fields)"
-msgstr "Sayısal alanlar için izin verilen maksimum değer (metin veya mantıksal alanları için yoksayılır)"
-
-#: adjfeedback/models.py
-msgid "choices"
-msgstr "seçenekler"
-
-#: adjfeedback/models.py
-msgid "Permissible choices for select one/multiple fields (ignored for other fields)"
-msgstr "Bir/birden fazla alan seçmek için izin verilen seçenekler (diğer alanlar için yoksayılır)"
 
 #: adjfeedback/models.py
 msgid "adjudicator feedback question"
@@ -451,6 +288,14 @@ msgstr "Temel puanı düzenlemek için tıklayın"
 #: adjfeedback/tables.py
 msgid "Assigned base score"
 msgstr "Atanan temel puan"
+
+#: adjfeedback/tables.py
+msgid "Feedback average"
+msgstr ""
+
+#: adjfeedback/tables.py
+msgid "This adjudicator's feedback average"
+msgstr ""
 
 #: adjfeedback/tables.py
 msgid "The current difference between an adjudicator's base score and current score"
@@ -530,6 +375,10 @@ msgstr ""
 #: adjfeedback/templates/enter_feedback.html
 msgid "There are some problems with this feedback submission. Please review and correct them."
 msgstr "Bu geri bildirimle ilgili bazı sorunlar vardır. Lütfen bunları gözden geçirin ve düzeltin."
+
+#: adjfeedback/templates/enter_feedback.html
+msgid "Save Feedback"
+msgstr ""
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "When submitting this form your IP address will be stored for logging purposes."
@@ -618,8 +467,8 @@ msgstr "%(adjudicator)s jürisi hakkında"
 
 #: adjfeedback/templates/feedback_card.html
 #, python-format
-msgid "<span class=\"text-secondary small\">Received as %(as_type)s</span>"
-msgstr "<span class=\"text-secondary small\"> %(as_type)s</span> olarak alındı."
+msgid "Received as %(as_type)s"
+msgstr ""
 
 #: adjfeedback/templates/feedback_card.html
 #, python-format
@@ -750,8 +599,8 @@ msgstr[1] "Tur başına %(c_chairs)s maç var, bu yüzden %(c_chairs)s başkan g
 #, python-format
 msgid "There is %(c_debates)s debate per round, but only %(c_chairs)s above the minimum voting score."
 msgid_plural "There are %(c_debates)s debates per round, but only %(c_chairs)s above the minimum voting score."
-msgstr[0] "Tur başına %(c_chairs)s maç var, ancak minimum oy puanının üzerinde sadece %(c_chairs) var."
-msgstr[1] "Tur başına %(c_chairs)s maç var, ancak minimum oy puanının üzerinde sadece %(c_chairs) var."
+msgstr[0] "Tur başına %(c_debates)s maç var, ancak minimum oy puanının üzerinde sadece %(c_chairs)s var."
+msgstr[1] "Tur başına %(c_debates)s maç var, ancak minimum oy puanının üzerinde sadece %(c_chairs)s var."
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
@@ -972,4 +821,8 @@ msgid "Updated base score for %(count)d adjudicator."
 msgid_plural "Updated base scores for %(count)d adjudicators."
 msgstr[0] "%(count)d jürisi için temel puan güncellendi."
 msgstr[1] "%(count)d jürileri için temel puanlar güncellendi."
+
+#: adjfeedback/views.py
+msgid "Custom Feedback Questions"
+msgstr ""
 
