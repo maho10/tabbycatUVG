@@ -5,6 +5,7 @@ from draw.models import DebateTeam
 from utils.admin import ModelAdmin
 
 from .models import (AdjudicatorAdjudicatorConflict, AdjudicatorInstitutionConflict,
+                     AdjudicatorRequirementAssignment, AdjudicatorRequirementException,
                      AdjudicatorTeamConflict, DebateAdjudicator, PreformedPanel,
                      PreformedPanelAdjudicator, TeamInstitutionConflict)
 
@@ -72,3 +73,17 @@ class PreformedPanelAdmin(ModelAdmin):
     list_display = ('id', 'round', 'importance', 'bracket_min', 'bracket_max', 'room_rank', 'liveness')
     list_select_related = ('round__tournament',)
     inlines = (PreformedPanelAdjudicatorInline,)
+
+
+@admin.register(AdjudicatorRequirementAssignment)
+class AdjudicatorRequirementAssignmentAdmin(ModelAdmin):
+    list_display = ('adjudicator', 'institution', 'team')
+    list_select_related = ('adjudicator__institution', 'institution', 'team__tournament')
+    search_fields = ('adjudicator__name', 'institution__name', 'team__short_name', 'team__long_name')
+
+
+@admin.register(AdjudicatorRequirementException)
+class AdjudicatorRequirementExceptionAdmin(ModelAdmin):
+    list_display = ('institution', 'team', 'count')
+    list_select_related = ('institution', 'team__tournament')
+    search_fields = ('institution__name', 'team__short_name', 'team__long_name')

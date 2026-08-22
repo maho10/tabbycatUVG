@@ -1,5 +1,6 @@
+from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext, gettext_lazy as _
 
 from utils.models import UniqueConstraint
 
@@ -178,3 +179,60 @@ class PreformedPanelAdjudicator(models.Model):
 
     def __str__(self):
         return "[{x.id}] {x.adjudicator.name} in panel {x.panel_id}".format(x=self)
+
+
+# ==============================================================================
+# Adjudicator Requirements
+# ==============================================================================
+
+class AdjudicatorRequirementAssignment(models.Model):
+
+    adjudicator = models.OneToOneField('participants.Adjudicator', models.CASCADE,
+        verbose_name=_("adjudicator"))
+    institution = models.ForeignKey('participants.Institution', models.CASCADE,
+        blank=True, null=True, verbose_name=_("institution"))
+    team = models.ForeignKey('participants.Team', models.CASCADE,
+        blank=True, null=True, verbose_name=_("team"))
+
+    class Meta:
+        verbose_name = _("adjudicator requirement assignment")
+        verbose_name_plural = _("adjudicator requirement assignments")
+
+    def clean(self):
+        if not (self.institution or self.team):
+            raise ValidationError(
+                gettext("Either an institution or a team must be specified."))
+        if self.institution and self.team:
+            raise ValidationError(
+                gettext("There was both an institution and a team specified."))
+
+    def __str__(self):
+        return '{} covers {}'.format(self.adjudicator, self.institution or self.team)
+
+
+class AdjudicatorRequirementException(models.Model):
+
+    institution = models.ForeignKey('participants.Institution', models.CASCADE,
+        blank=True, null=True, verbose_name=_("institution"))
+    team = models.ForeignKey('participants.Team', models.CASCADE,
+        blank=True, null=True, verbose_name=_("team"))
+    count = models.PositiveIntegerField(default=0, verbose_name=_("exceptions granted"))
+
+    class Meta:
+        constraints = [
+            UniqueConstraint(fields=['institution']),
+            UniqueConstraint(fields=['team']),
+        ]
+        verbose_name = _("adjudicator requirement exception")
+        verbose_name_plural = _("adjudicator requirement exceptions")
+
+    def clean(self):
+        if not (self.institution or self.team):
+            raise ValidationError(
+                gettext("Either an institution or a team must be specified."))
+        if self.institution and self.team:
+            raise ValidationError(
+                gettext("There was both an institution and a team specified."))
+
+    def __str__(self):
+        return '{:d} exception(s) for {}'.format(self.count, self.institution or self.team)
